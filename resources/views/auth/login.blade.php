@@ -7,7 +7,7 @@
     <meta name="description" content="Khóa Học Lập Trình Laravel Framework 5.x Tại Khoa Phạm">
     <meta name="author" content="">
 
-    <title>Admin</title>
+    <title>Admin - Khoa Phạm</title>
     <base href="{{asset('')}}">
 
     <!-- Bootstrap Core CSS -->
@@ -58,7 +58,7 @@
                                 <button type="submit" class="btn btn-lg btn-success btn-block">Đăng nhập</button>
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Quên mật khẩu?') }}
+                                        {{ __('Quên mật khẩu') }}
                                     </a>
                                 @endif
                             </fieldset>
