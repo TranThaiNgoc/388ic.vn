@@ -28,6 +28,30 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
+                            <a href="#"><i class="fas fa-search"></i> Tuyển dụng<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ route('admin.job') }}">Danh sách tuyển dụng</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.job.add') }}">Thêm tuyển dụng</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fas fa-hammer"></i> Ngành nghề<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ route('admin.career') }}">Danh sách ngành nghề</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.career.add') }}">Thêm ngành nghề</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
                             <a href="#"><i class="fas fa-shopping-cart"></i> Đơn hàng<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
