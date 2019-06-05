@@ -37,6 +37,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth',]],function(){
 		Route::get('delete/{id}', 'JobController@getdelete')->name('admin.job.delete');
 	});
 
+	Route::group(['prefix' => 'project'],function(){
+		Route::get('/', 'ProjectController@getlist')->name('admin.project');
+		Route::get('add', 'ProjectController@getadd')->name('admin.project.add');
+		Route::post('add', 'ProjectController@postadd');
+		Route::get('edit/{id}', 'ProjectController@getedit')->name('admin.project.edit');
+		Route::post('edit/{id}', 'ProjectController@postedit');
+		Route::get('delete/{id}', 'ProjectController@getdelete')->name('admin.project.delete');
+	});
+
 	Route::group(['prefix' => 'career'],function(){
 		Route::get('/', 'CareerController@getlist')->name('admin.career');
 		Route::get('add', 'CareerController@getadd')->name('admin.career.add');

@@ -40,6 +40,18 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
+                            <a href="#"><i class="fas fa-project-diagram"></i> Dự án<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ route('admin.project') }}">Danh sách tuyển dụng</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.project.add') }}">Thêm tuyển dụng</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
                             <a href="#"><i class="fas fa-hammer"></i> Ngành nghề<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>

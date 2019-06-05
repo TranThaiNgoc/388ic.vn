@@ -31,7 +31,7 @@
                     </div>
                     <div class="form-group">
                         <label>Mô tả</label>
-                        <textarea placeholder="Mô tả việc làm" value="{{ old('title') }}" id="ckeditor" class="form-control ckeditor" name="description">{!! old('description') !!}</textarea>
+                        <textarea placeholder="Mô tả việc làm" value="{{ old('description') }}" id="ckeditor" class="form-control ckeditor" name="description">{!! old('description') !!}</textarea>
                         <span class="text-danger">{{ $errors->first('description') }}</span>
                     </div>
                     <div class="form-group">
