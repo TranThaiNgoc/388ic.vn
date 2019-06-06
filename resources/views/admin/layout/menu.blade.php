@@ -41,10 +41,10 @@
                             <a href="#"><i class="fas fa-project-diagram"></i> Dự án<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ route('admin.project') }}">Danh sách tuyển dụng</a>
+                                    <a href="{{ route('admin.project') }}">Danh sách dự án</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('admin.project.add') }}">Thêm tuyển dụng</a>
+                                    <a href="{{ route('admin.project.add') }}">Thêm dự án</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -106,10 +106,10 @@
                             <a href="#"><i class="fas fa-project-diagram"></i> Dự án<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ route('admin.project') }}">Danh sách tuyển dụng</a>
+                                    <a href="{{ route('admin.project') }}">Danh sách dự án</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('admin.project.add') }}">Thêm tuyển dụng</a>
+                                    <a href="{{ route('admin.project.add') }}">Thêm dự án</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

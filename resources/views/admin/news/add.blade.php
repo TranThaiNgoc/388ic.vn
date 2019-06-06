@@ -48,14 +48,6 @@
                     	<input type="file" name="image">
                     </div>
                     <div class="form-group">
-                    	<label>Loại bài viết</label>
-                    	<select name="type" class="form-control">
-                    		@foreach(config('master_admin.loaibaiviet') as $key => $value)
-                    			<option value="{{ $key }}">{{ $value }}</option>
-                			@endforeach
-                    	</select>
-                    </div>
-                    <div class="form-group">
                     	<label style="display: block;">Trạng thái bài viết</label>
                     	<label class="radio-inline"><input type="radio" name="status" value="0" checked>Kích hoạt</label>
                     	<label class="radio-inline"><input type="radio" name="status" value="1">Không kích hoạt</label>

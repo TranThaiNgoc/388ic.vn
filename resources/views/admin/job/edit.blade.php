@@ -130,6 +130,11 @@
                         <input type="text" value="{{ $job['vacancies'] }}" name="vacancies" class="form-control" placeholder="Vị trí tuyển dụng" value="">
                         <span class="text-danger">{{ $errors->first('vacancies') }}</span>
                     </div>
+                    <div class="form-group">
+                        <label>Hình ảnh (logo công ty)</label>
+                        <input type="file" name="image">
+                        <img width="30%" src="{{ $job['image'] }}">
+                    </div>
                     <button type="submit" class="btn btn-primary">Sửa tuyển dụng</button>
                 </div>
                 <form>

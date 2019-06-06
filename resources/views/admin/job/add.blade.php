@@ -126,6 +126,10 @@
                         <input type="text" value="{{ old('vacancies') }}" name="vacancies" class="form-control" placeholder="Vị trí tuyển dụng" value="">
                         <span class="text-danger">{{ $errors->first('vacancies') }}</span>
                     </div>
+                    <div class="form-group">
+                        <label>Hình ảnh (logo công ty)</label>
+                        <input type="file" name="image">
+                    </div>
                 <button type="submit" class="btn btn-primary">Thêm tuyển dụng</button>
                 </div>
             <form>

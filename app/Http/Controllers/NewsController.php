@@ -47,16 +47,12 @@ class NewsController extends Controller
     			'image.required' => 'Hình bài viết không được để trống',
     			'status.required' => 'Trạng thái bài viết không được để trống',
     		]);
-		if(!array_key_exists($request->type,config('master_admin.loaibaiviet'))) {
-			abort('404');
-    	}
 
     	$data = [
     		'name' => $request->name,
     		'slug' =>str_slug(trim($request->name)),
     		'summary' => $request->summary,
     		'content' => $request->content,
-    		'type' => $request->type,
     		'view' => 0,
     		'status' => $request->status,
     		'created_at' => date('Y-m-d H:m:s'),
@@ -104,16 +100,12 @@ class NewsController extends Controller
     			'image.image' => 'Hình bài viết không chính xác.',
     			'status.required' => 'Trạng thái bài viết không được để trống',
     		]);
-		if(!array_key_exists($request->type,config('master_admin.loaibaiviet'))) {
-			abort('404');
-    	}
     	$news = DB::table('news')->where('id', $id)->select('image')->first();
     	$data = [
     		'name' => $request->name,
     		'slug' =>str_slug(trim($request->name)),
     		'summary' => $request->summary,
     		'content' => $request->content,
-    		'type' => $request->type,
     		'view' => 0,
     		'status' => $request->status,
     		'created_at' => date('Y-m-d H:m:s'),
@@ -142,7 +134,8 @@ class NewsController extends Controller
     	if(is_null($news)) {
     		abort('404');
     	}
-
+        $image_delete = str_replace(env('APP_URL').'/storage', 'public', $news->image);
+                Storage::delete($image_delete);
     	$news->delete();
     	return redirect()->back()->with('thongbao','Xóa bài viết thành công.');
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\job;
+use Storage;
 use DB;
 
 class JobController extends Controller
@@ -53,6 +54,7 @@ class JobController extends Controller
                 'money' => 'required',
                 'career' => 'required',
                 'vacancies' => 'required',
+                'image' => 'required|image',
             ],
             [
                 'title.required' => 'Tên chức danh không được để trống.',
@@ -78,10 +80,13 @@ class JobController extends Controller
                 'money.required' => 'Mức lương không được để trống.',
                 'career.required' => 'Ngành nghề không được để trống.',
                 'vacancies.required' => 'Vị trí tuyển dụng không được để trống.',
+                'image.required' => 'Hình ảnh không được để trống.',
+                'immage.image' => 'Hỉnh ảnh không hợp lệ.',
             ]);
 
         $data = [
             'title' => $request->title,
+            'slug' => str_slug(trim($request->title)),
             'description' => $request->description,
             'right' => $request->right,
             'number' => $request->number,
@@ -98,6 +103,16 @@ class JobController extends Controller
             'vacancies' => $request->vacancies,
             'created_at' => date('Y-m-d H:i:s'),
         ];
+        if($request->hasFile('image'))
+        {
+            $file = $request->file('image');
+            $new_name_image = rand(1,999999) . '-' . $file->getClientOriginalName();
+            $path = Storage::putFileAs(
+                'public/uploads', $file, $new_name_image
+            );
+            $image = env('APP_URL').Storage::url($path);
+            $data['image'] = $image;
+        }
         DB::table('job')->insert($data);
 
         return redirect()->back()->with('thongbao', 'Thêm tuyển dụng thành công.');
@@ -151,6 +166,7 @@ class JobController extends Controller
                 'money' => 'required',
                 'career' => 'required',
                 'vacancies' => 'required',
+                'image' => 'image',
             ],
             [
                 'title.required' => 'Tên chức danh không được để trống.',
@@ -176,10 +192,12 @@ class JobController extends Controller
                 'money.required' => 'Mức lương không được để trống.',
                 'career.required' => 'Ngành nghề không được để trống.',
                 'vacancies.required' => 'Vị trí tuyển dụng không được để trống.',
+                'image.image' => 'Hìn ảnh không hợp lệ.',
             ]);
-
+        $jobs = DB::table('job')->where('id', $id)->select('image')->first();
         $data = [
             'title' => $request->title,
+            'slug' => str_slug(trim($request->title)),
             'description' => $request->description,
             'right' => $request->right,
             'number' => $request->number,
@@ -196,6 +214,20 @@ class JobController extends Controller
             'vacancies' => $request->vacancies,
             'created_at' => date('Y-m-d H:i:s'),
         ];
+        if($request->hasFile('image'))
+        {
+            $file = $request->file('image');
+            $new_name_image = rand(1,999999) . '-' . $file->getClientOriginalName();
+            $path = Storage::putFileAs(
+                'public/uploads', $file, $new_name_image
+            );
+            $image = env('APP_URL').Storage::url($path);
+            $data['image'] = $image;
+            if(!is_null($jobs)){
+                $image_delete = str_replace(env('APP_URL').'/storage', 'public', $jobs->image);
+                Storage::delete($image_delete);
+            }
+        }
         $job->update($data);
 
         return redirect()->back()->with('thongbao', 'Sửa tuyển dụng thành công.');

@@ -49,14 +49,6 @@
                     	<input type="file" name="image">
                     </div>
                     <div class="form-group">
-                    	<label class="news">Loại bài viết</label>
-                    	<select name="type" class="form-control">
-                    		@foreach(config('master_admin.loaibaiviet') as $key => $value)
-                    			<option {{ $news->type == $key ? 'selected' : '' }} value="{{ $key }}">{{ $value }}</option>
-                			@endforeach
-                    	</select>
-                    </div>
-                    <div class="form-group">
                     	<label style="display: block;">Trạng thái bài viết</label>
                     	@if($news->status == 0)
 	                    	<label class="radio-inline"><input type="radio" name="status" value="0" checked>Kích hoạt</label>

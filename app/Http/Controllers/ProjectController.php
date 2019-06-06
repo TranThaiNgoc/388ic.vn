@@ -41,6 +41,7 @@ class ProjectController extends Controller
     		]);
     	$data = [
     		'name' => $request->name,
+            'slug' => str_slug(trim($request->name)),
     		'content' => $request->content,
     		'created_at' => date('Y-m-d H:m:s'),
     	];
@@ -125,6 +126,7 @@ class ProjectController extends Controller
     		]);
     	$data = [
     		'name' => $request->name,
+            'slug' => str_slug(trim($request->name)),
     		'content' => $request->content,
     		'created_at' => date('Y-m-d H:m:s'),
     	];
