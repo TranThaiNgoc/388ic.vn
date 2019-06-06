@@ -24,6 +24,7 @@ class ProjectController extends Controller
     			'name' => 'required|min:4|max:1024',
     			'content' => 'required',
     			'image1' => 'required|image',
+                'status' => 'required',
     			'image2' => 'image',
     			'image3' => 'image',
     			'image4' => 'image',
@@ -38,11 +39,13 @@ class ProjectController extends Controller
     			'image2.image' => 'Hình ảnh dự án không hợp lệ.',
     			'image3.image' => 'Hình ảnh dự án không hợp lệ.',
     			'image4.image' => 'Hình ảnh dự án không hợp lệ.',
+                'status.required' => 'Tình trạng dự án không được để trống.',
     		]);
     	$data = [
     		'name' => $request->name,
             'slug' => str_slug(trim($request->name)),
     		'content' => $request->content,
+            'status' => $request->status,
     		'created_at' => date('Y-m-d H:m:s'),
     	];
     	if($request->hasFile('image1'))
@@ -112,6 +115,7 @@ class ProjectController extends Controller
     			'image2' => 'image',
     			'image3' => 'image',
     			'image4' => 'image',
+                'status' => 'required',
     		],
     		[
     			'name.required' => 'Tên dự án không được để trống.',
@@ -123,11 +127,13 @@ class ProjectController extends Controller
     			'image2.image' => 'Hình ảnh dự án không hợp lệ.',
     			'image3.image' => 'Hình ảnh dự án không hợp lệ.',
     			'image4.image' => 'Hình ảnh dự án không hợp lệ.',
+                'status.required' => 'Tình trạng dự án không được để trống.',
     		]);
     	$data = [
     		'name' => $request->name,
             'slug' => str_slug(trim($request->name)),
     		'content' => $request->content,
+            'status' => $request->status,
     		'created_at' => date('Y-m-d H:m:s'),
     	];
     	$project = DB::table('project')->where('id',$id)->select('image1', 'image2', 'image3', 'image4')->first();

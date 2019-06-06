@@ -66,6 +66,22 @@
                                     <img width="150px" src="{{ isset($project['image4']) ? $project['image4'] : '' }}">
                                     <span class="text-danger">{{ $errors->first('image4') }}</span>
                                 </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label>Tình trạng dự án</label>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                <select class="form-control" name="status">
+                                                    @foreach(config('master_admin.tiendo') as $key => $value)
+                                                    <option value="{{ $key }}" {{ ($key == $project['status'] ? 'selected' : '') }}>{{ $value }}</option>
+                                                    @endforeach
+                                                </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

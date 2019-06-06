@@ -63,8 +63,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="nolist product-years">
-                                    <li><a href="">Đã thi công</a></li>
-                                    <li><a href="">Đang thi công</a></li>
+                                    <li><a href="{{ route('search_project','dathicong') }}">Đã thi công</a></li>
+                                    <li><a href="{{ route('search_project','dangthicong') }}">Đang thi công</a></li>
                                 </ul>
                             </div>
                         </div>

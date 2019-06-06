@@ -1,3 +1,6 @@
+@php
+    use App\Http\Controllers\Common\Common;
+@endphp
 @extends('layouts.app1')
 @section('title', 'Danh sách bài viết')
 @section('content')
@@ -29,8 +32,9 @@
                     <div class="col-md-9">
                         <ul class="nolist">
                             @foreach(@$news as $value)
-                            <li class="row align-items-center py-3">
-                                <div class="col-md-4 col-4">
+                            <li class="recruit-items__hover mb-3">
+                                <div class="row align-items-center">
+                                    <div class="col-md-4 col-4">
                                     <a href="{{ route('news',['slug' => $value->slug]) }}"><img src="{{ $value->image }}" alt="{{ $value->name }}"></a>
                                 </div>
                                 <div class="col-md-8 col-8">
@@ -38,8 +42,9 @@
                                         <a href="#">{{ $value->name }}</a>
                                     </div>
                                     <div class="post-content d-none d-md-block">
-                                        <p>{!! \Illuminate\Support\Str::words($value->summary, 12,'....') !!}</p>
+                                        <p>{!! Common::_substr(strip_tags($value->summary), 300) !!}</p>
                                     </div>
+                                </div>
                                 </div>
                             </li>
                             @endforeach

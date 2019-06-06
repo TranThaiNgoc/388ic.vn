@@ -256,8 +256,7 @@
     </div>
     <div class="scroll-top">
         <a href="#" class="smooth-scroll">
-            <i class="fa fa-angle-up" aria-hidden="true"></i>
-            Top
+            <i class="fa fa-caret-up" aria-hidden="true"></i>
         </a>
     </div>
 

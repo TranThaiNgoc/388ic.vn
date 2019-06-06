@@ -38,4 +38,8 @@ return [
         'daihoc' => 'Đại học',
         'trendaihoc' => 'Trên đại học',
     ],
+    'tiendo' => [
+        'dathicong' => 'Đã thi công.',
+        'dangthicong' => 'Đang thi công.',
+    ],
 ];

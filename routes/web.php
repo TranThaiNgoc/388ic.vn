@@ -12,14 +12,15 @@
 */
 
 Route::get('/', 'IndexController@getIndex')->name('home');
-Route::get('gioi-thieu', 'IndexController@getAbout')->name('about');
-Route::get('lien-he', 'IndexController@getContact')->name('contact');
-Route::get('danh-sach-bai-viet', 'IndexController@getListNews')->name('list_news');
-Route::get('bai-viet-chi-tiet/{slug}', 'IndexController@getNewsPost')->name('news');
-Route::get('danh-sach-du-an', 'IndexController@getListProject')->name('list_project');
-Route::get('du-an-chi-tiet/{slug}', 'IndexController@getProject')->name('project');
-Route::get('danh-sach-tuyen-dung', 'IndexController@getListJob')->name('list_job');
-Route::get('tuyen-dung/{slug}', 'IndexController@getJob')->name('job');
+Route::get('gioi-thieu.html', 'IndexController@getAbout')->name('about');
+Route::get('lien-he.html', 'IndexController@getContact')->name('contact');
+Route::get('danh-sach-bai-viet.html', 'IndexController@getListNews')->name('list_news');
+Route::get('bai-viet-chi-tiet/{slug}.html', 'IndexController@getNewsPost')->name('news');
+Route::get('danh-sach-du-an.html', 'IndexController@getListProject')->name('list_project');
+Route::get('du-an-chi-tiet/{slug}.html', 'IndexController@getProject')->name('project');
+Route::get('danh-sach-tuyen-dung.html', 'IndexController@getListJob')->name('list_job');
+Route::get('tuyen-dung/{slug}.html', 'IndexController@getJob')->name('job');
+Route::get('du-an/{slug}.html', 'IndexController@getSearch_project')->name('search_project');
 
 Auth::routes();
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']],function(){

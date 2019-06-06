@@ -62,4 +62,9 @@ class IndexController extends Controller
         $career = DB::table('career')->get();
         return view('job', compact('configuration', 'job', 'career'));
     }
+
+    public function getSearch_project($slug) {
+        $project = DB::table('project')->where('status', $slug)->paginate(6);
+        return view('list_project', compact('configuration', 'project'));
+    }
 }

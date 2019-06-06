@@ -41,7 +41,7 @@
                     </div>
                     <div class="form-group">
                     	<label>Nội dung bài viết</label>
-                    	<textarea class="form-control editor" name="content" id="editor1" placeholder="Nhập nội dung bài viết" rows="10"></textarea>
+                    	<textarea class="form-control editor" name="content" id="editor" placeholder="Nhập nội dung bài viết" rows="10"></textarea>
                     </div>
                     <div class="form-group">
                     	<label>hình ảnh bài viết</label>

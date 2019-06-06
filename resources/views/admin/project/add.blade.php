@@ -68,6 +68,20 @@
                             </div>
                         </div>
                     </div>
+                        <div class="form-group">
+                            <label>Tình trạng dự án</label>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                    <select class="form-control" name="status">
+                                        @foreach(config('master_admin.tiendo') as $key => $value)
+                                        <option value="{{ $key }}">{{ $value }}</option>
+                                        @endforeach
+                                    </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 					<button type="submit" class="btn btn-primary">Thêm Dự án</button>
                 <form>
             </div>
