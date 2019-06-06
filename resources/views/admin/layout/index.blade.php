@@ -72,6 +72,7 @@
     <script src="ckeditor/ckfinder/ckfinder.js"></script>
     <script> CKEDITOR.replace('editor'); </script>
     <script> CKEDITOR.replace('editor1'); </script>
+    
     @yield('script')
 </body>
 

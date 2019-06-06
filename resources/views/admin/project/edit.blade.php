@@ -52,6 +52,8 @@
                                     <img width="150px" src="{{ isset($project['image2']) ? $project['image2'] : '' }}">
                                     <span class="text-danger">{{ $errors->first('image2') }}</span>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-lg-6">
                                     <label>Hình 3</label>
                                     <input type="file" name="image3">
