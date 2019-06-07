@@ -32,35 +32,47 @@
                         <div id="slider_product_detail" class="swiper-container gallery-top">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <img src="{{ $project->image1 }}" alt="">
+                                    <img src="{{ $project->image1 }}" alt="{{ $project->name }}">
                                 </div>
+                                @if(!is_null($project->image2))
                                 <div class="swiper-slide">
-                                    <img src="{{ $project->image2 }}" alt="">
+                                    <img src="{{ $project->image2 }}" alt="{{ $project->name }}">
                                 </div>
+                                @endif
+                                @if(!is_null($project->image2))
                                 <div class="swiper-slide">
-                                    <img src="{{ $project->image3 }}" alt="">
+                                    <img src="{{ $project->image3 }}" alt="{{ $project->name }}">
                                 </div>
+                                @endif
+                                @if(!is_null($project->image2))
                                 <div class="swiper-slide">
-                                    <img src="{{ $project->image4 }}" alt="">
+                                    <img src="{{ $project->image4 }}" alt="{{ $project->name }}">
                                 </div>
+                                @endif
                             </div>
                             <div class="swiper-button-next swiper-button-white"></div>
                             <div class="swiper-button-prev swiper-button-white"></div>
                         </div>
                         <div id="slider_product_thumb" class="swiper-container gallery-thumbs small">
-                            <div class="swiper-wrapper">
+                            <div class="swiper-wrapper justify-content-center">
                                 <div class="swiper-slide">
-                                    <img src="{{ $project->image1 }}" alt="">
+                                    <img src="{{ $project->image1 }}" alt="{{ $project->name }}">
                                 </div>
+                                @if(!is_null($project->image2))
                                 <div class="swiper-slide">
-                                    <img src="{{ $project->image2 }}" alt="">
+                                    <img src="{{ $project->image2 }}" alt="{{ $project->name }}">
                                 </div>
+                                @endif
+                                @if(!is_null($project->image2))
                                 <div class="swiper-slide">
-                                    <img src="{{ $project->image3 }}" alt="">
+                                    <img src="{{ $project->image3 }}" alt="{{ $project->name }}">
                                 </div>
+                                @endif
+                                @if(!is_null($project->image2))
                                 <div class="swiper-slide">
-                                    <img src="{{ $project->image4 }}" alt="">
+                                    <img src="{{ $project->image4 }}" alt="{{ $project->name }}">
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -103,8 +115,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <ul class="nolist product-years">
-                            <li><a href="">Đã thi công</a></li>
-                            <li><a href="">Đang thi công</a></li>
+                             <li><a href="{{ route('search_project','dathicong') }}">Đã thi công</a></li>
+                             <li><a href="{{ route('search_project','dangthicong') }}">Đang thi công</a></li>
                         </ul>
                     </div>
                 </div>

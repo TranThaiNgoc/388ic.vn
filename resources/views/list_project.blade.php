@@ -1,3 +1,6 @@
+@php
+    use App\Http\Controllers\Common\Common;
+@endphp
 @extends('layouts.app1')
 @section('title', 'Danh sách dự án')
 @section('content')
@@ -34,14 +37,14 @@
                                     <div class="card-top">
                                         <a href="{{ route('project', ['slug'=>$value->slug]) }}"><img
                                                 src="{{ $value->image1 }}"
-                                                alt="{{ $value->name }}"></a>
+                                                alt="{{ $value->name }}" class="products-img"></a>
                                     </div>
                                     <div class="card-body">
                                         <div class="products-title">
                                             <a href="{{ route('project', ['slug'=>$value->slug]) }}">{{ $value->name }}</a>
                                         </div>
                                         <div class="products-content">
-                                            <span>{!! \Illuminate\Support\Str::words($value->content, 12,'....') !!}</span>
+                                            <span>{!! Common::_substr(strip_tags($value->content), 60) !!}</span>
                                         </div>
                                     </div>
                                 </div>

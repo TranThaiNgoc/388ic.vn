@@ -57,7 +57,7 @@
 						@endforeach
                     </span>
                     <span class="btn-sm btn-warning d-inline-block m-1">
-						@foreach($career as $k => $v)
+						@foreach(@$career as $k => $v)
                     	{{ ($v->slug == $job->career) ? $v->name : '' }}</span>
                     	@endforeach
                     <span class="btn-sm btn-warning d-inline-block m-1">{{ $job->vacancies }}</span>

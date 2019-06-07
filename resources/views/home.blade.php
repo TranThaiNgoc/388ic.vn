@@ -1,3 +1,6 @@
+@php
+    use App\Http\Controllers\Common\Common;
+@endphp
 @extends('layouts.app1')
 @section('title', 'Công ty Cổ phần Đầu tư và Xây lắp 388 - 388IC')
 @section('content')
@@ -31,14 +34,14 @@
                                 <div class="card-top">
                                     <a href="{{ route('project',['slug'=>$value->slug]) }}"><img
                                     src="{{ $value->image1 }}"
-                                    alt=""></a>
+                                    alt="{{ $value->name }}"></a>
                                 </div>
                                 <div class="card-body">
                                     <div class="products-title">
                                         <a href="{{ route('project',['slug'=>$value->slug]) }}">{{ $value->name }}</a>
                                     </div>
                                     <div class="products-content">
-                                        <span>{!! \Illuminate\Support\Str::words($value->content, 12,'....') !!} </span>
+                                        <span>{!! Common::_substr(strip_tags($value->content), 55) !!} </span>
                                     </div>
                                 </div>
                             </div>
@@ -104,11 +107,11 @@
                                             </div>
                                             <div class="row mb-2">
                                                 @foreach(@$job as $value)
-                                                <div class="recruit col-md-6 mb-3">
+                                                <div class="recruit col-xl-6 mb-3">
                                                     <div class="row">
                                                         <div class="col-md-4 col-5">
-                                                            <a href="{{ route('job',['slug'=>$value->slug]) }}" class="d-block">
-                                                                <img src="{{ $value->image }}" alt="">
+                                                            <a href="{{ route('job',['slug'=>$value->slug]) }}" class="d-block recruit-link">
+                                                                <img src="{{ $value->image }}" alt="{{ $value->title }}">
                                                             </a>
                                                         </div>
                                                         <div class="col-md-8 pl-0 col-7">

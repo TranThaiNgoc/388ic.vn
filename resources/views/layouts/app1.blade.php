@@ -23,7 +23,7 @@
             <div class="d-flex flex-wrap">
                 <div class="flex-grow-1">
                     <div class="logo bg-white d-inline-block">
-                        <a href="#" class="d-block py-1">
+                        <a id="logo" href="{{ url('/') }}" class="d-block py-1">
                             <img src="{{ $configuration->logo_website }}" alt="388ic.com">
                         </a>
                     </div>
@@ -88,11 +88,11 @@
                             <li><a href="{{ route('contact') }}">@lang('home.contact_menu')</a></li>
                             <li class="d-block d-md-none ">
                                 <div class="topBar pb-2 d-flex">
-                                    <a href="#" class="text-dark">
+                                    <a href="locale/en" class="text-dark">
                                         <img class="flag" src="{{asset('home/images/eng.jpg')}}" alt="">
                                         ENG
                                     </a>
-                                    <a href="#" class="text-dark">
+                                    <a href="locale/vi" class="text-dark">
                                         <img class="flag" src="{{asset('home/images/vietnam.jpg')}}" alt="">
                                         VI
                                     </a>
@@ -254,8 +254,8 @@
             </div>
         </div>
     </div>
-    <div class="scroll-top">
-        <a href="#" class="smooth-scroll">
+    <div class="scroll-top" style="cursor: pointer;">
+        <a class="smooth-scroll">
             <i class="fa fa-caret-up" aria-hidden="true"></i>
         </a>
     </div>
@@ -267,6 +267,11 @@
 <script src="{{asset('home/js/swiper.min.js')}}"></script>
 <script src="{{asset('home/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('home/js/app.js')}}"></script>
+<script type="text/javascript">
+    $('.scroll-top').on("click", function () {
+    $(window).scrollTop(0);
+});
+</script>
 
 </body>
 

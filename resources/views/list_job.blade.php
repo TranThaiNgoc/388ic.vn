@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="col-md-9">
                         <ul class="nolist">
-                        	@foreach($job as $value)
+                        	@foreach(@$job as $value)
                             <li class="recruit-items__hover mb-3">
                                 <div class="row align-items-center">
                                     <div class="col-md-4 col-4">
