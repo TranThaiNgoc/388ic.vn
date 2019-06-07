@@ -19,7 +19,7 @@
     <div class="container">
         <div class="d-flex flex-wrap title-descript">
             <div class="flex-grow-1">
-                <h3 class="text-uppercase">Dự án tiêu biểu</h3>
+                <h3 class="text-uppercase">@lang('home.typical_projects')</h3>
             </div>
         </div>
         <div class="row py-3">
@@ -49,7 +49,7 @@
                                     <div class="d-flex flex-wrap bg-news">
                                         <div class="col-md-12 py-3">
                                             <div class="row title-descript px-3">
-                                                <h3 class="text-leftd-md-inline-block col">TIN MỚI NHẤT</h3>
+                                                <h3 class="text-leftd-md-inline-block col">@lang('home.news_menu')</h3>
                                             </div>
                                         </div>
                                         @foreach(@$news as $value)
@@ -99,7 +99,7 @@
                                         <div class="col-md-8">
                                             <div class="d-flex flex-wrap title-descript mb-3">
                                                 <div class="flex-grow-1">
-                                                    <h3 class="text-uppercase">Tuyển Dụng</h3>
+                                                    <h3 class="text-uppercase">@lang('home.job_menu')</h3>
                                                 </div>
                                             </div>
                                             <div class="row mb-2">
@@ -136,13 +136,13 @@
                                         <div class="col-md-4">
                                             <div class="operate">
                                                 <div class="title-right">
-                                                    <h4>HỢP TÁC CÙNG 388</h4>
+                                                    <h4>@lang('home.cooperate_with') 388ic</h4>
                                                 </div>
                                                 <div class="py-2 px-3">
-                                                    <span>Nhấp chuột vào link liên kết để liên hệ với 388</span>
+                                                    <span>@lang('home.contact_link')</span>
                                                 </div>
                                                 <div class="d-flex py-2">
-                                                    <a href="#" class="btn-sm font-weight-bold text-center btn-info w-50 mx-2 text-white">Facebook</a>
+                                                    <a href="https://www.facebook.com/C%C3%B4ng-ty-C%E1%BB%95-ph%E1%BA%A7n-%C4%90%E1%BA%A7u-t%C6%B0-v%C3%A0-X%C3%A2y-l%E1%BA%AFp-388-388IC-320814771937085/" class="btn-sm font-weight-bold text-center btn-info w-50 mx-2 text-white">Facebook</a>
                                                     <a href="#" class="btn-sm font-weight-bold text-center btn-info w-50 mx-2 text-white">Zalo</a>
                                                 </div>
                                                 <div class="d-flex py-2 text-right align-items-center">

@@ -30,11 +30,11 @@
                 </div>
                 <div class="header-right">
                     <div class="topBar text-right p-2 d-none d-md-block">
-                        <a href="#" class="text-dark">
-                            <img class="flag" src="{{asset('home/images/eng.jpg')}}" alt="">
+                        <a href="locale/en" class="text-dark">
+                            <img class="flag" src="{{asset('home/images/eng.jpg')}}">
                             ENG
                         </a>
-                        <a href="#" class="text-dark">
+                        <a href="locale/vi" class="text-dark">
                             <img class="flag" src="{{asset('home/images/vietnam.jpg')}}" alt="">
                             VI
                         </a>
@@ -68,24 +68,24 @@
                 <div class="col-md-12 h-100">
                     <nav id="navbar" class="nav-header">
                         <ul class="nolist d-flex flex-wrap">
-                            <li><a href="{{ url('/') }}">Trang chủ</a></li>
+                            <li><a href="{{ url('/') }}">@lang('home.home_menu')</a></li>
                             <li>
-                                <a href="{{ route('about') }}">Giới thiệu
+                                <a href="{{ route('about') }}">@lang('home.about_menu')
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('list_news') }}">Tin Tức
+                                <a href="{{ route('list_news') }}">@lang('home.news_menu')
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('list_project') }}">Dự Án
+                                <a href="{{ route('list_project') }}">@lang('home.project_menu')
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('list_job') }}">Tuyển Dụng
+                                <a href="{{ route('list_job') }}">@lang('home.job_menu')
                                 </a>
                             </li>
-                            <li><a href="{{ route('contact') }}">Liên Hệ</a></li>
+                            <li><a href="{{ route('contact') }}">@lang('home.contact_menu')</a></li>
                             <li class="d-block d-md-none ">
                                 <div class="topBar pb-2 d-flex">
                                     <a href="#" class="text-dark">
@@ -145,7 +145,7 @@
             <div class="company">
                 <div class="d-flex flex-wrap title-descript pt-3">
                     <div class="flex-grow-1">
-                        <h3 class="text-uppercase">Đối tác chiến lược</h3>
+                        <h3 class="text-uppercase">@lang('home.strategic_partnership')</h3>
                     </div>
                 </div>
                 <div class="d-flex flex-wrap py-3">
@@ -202,19 +202,19 @@
                         <div class="footer-body">
                             <ul class="nolist">
                                 <li>
-                                    <span><u>Văn Phòng Đại Diện:</u></span>
+                                    <span><u>@lang('home.representative_office'):</u></span>
                                     <span>No 20A – Pham Van Dinh Street – Thang Nhat Ward – Vung Tau City – Ba Ria Vung Tau Province.</span>
                                 </li>
                                 <li>
-                                    <span><u>Trụ Sở Chính:</u></span>
+                                    <span><u>@lang('home.headquarters'):</u></span>
                                     <span>No 2/14 - Bao Phuc Street – Dang Hai Ward - Ngo Quyen Dist - Hai Phong City</span>
                                 </li>
                                 <li>
-                                    <span><u>Số điện thoại:</u></span>
+                                    <span><u>@lang('home.phone'):</u></span>
                                     <span> +84 2253 722 126</span>
                                 </li>
                                 <li>
-                                    <span><u>Hotline:</u></span>
+                                    <span><u>@lang('home.phone'):</u></span>
                                     <span> +84 313 851 266</span>
                                 </li>
                                 <li>

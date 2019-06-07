@@ -10,7 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('locale/{locale}', function($locale) {
+	Session::put('locale', $locale);
+	return redirect()->back();
+});
 Route::get('/', 'IndexController@getIndex')->name('home');
 Route::get('gioi-thieu.html', 'IndexController@getAbout')->name('about');
 Route::get('lien-he.html', 'IndexController@getContact')->name('contact');

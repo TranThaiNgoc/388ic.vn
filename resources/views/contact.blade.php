@@ -8,15 +8,15 @@
                 <div class="d-md-inline-block text-md-left text-center text-primary title-content">
                     <div class="be-text-large d-md-inline-block d-block">
                         <ul class="nolist be-breadcrumb text-uppercase d-inline-flex">
-                            <li><a href="#">Trang chủ</a></li>
+                            <li><a href="#">@lang('home.home_menu')</a></li>
                             <!-- //Home -->
-                            <li><span>Liên Hệ</span></li>
+                            <li><span>@lang('home.contact_menu')</span></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-12 py-3">
-                <h1 class="header-title text-warning">Liên Hệ</h1>
+                <h1 class="header-title text-warning">@lang('home.contact_menu')</h1>
                 <hr>
             </div>
             <div class="col-12" id="parent">
@@ -29,7 +29,7 @@
                     <div class="col-md-6 order-0 order-md-1">
                         <form action="" class="contact-form" method="post">
                             <div class="form-group">
-                                <input type="text" class="form-control w-100 mr-0" id="name" name="nm" placeholder="Họ và tên"
+                                <input type="text" class="form-control w-100 mr-0" id="name" name="nm" placeholder="@lang('home.name')"
                                     required="" autofocus="">
                             </div>
                             <div class="form-group form_left">
@@ -39,14 +39,14 @@
 
                             <div class="form-group">
                                 <input type="text" class="form-control w-100 mr-0" id="phone" 
-                                    placeholder="Số điện thoại" required="">
+                                    placeholder="@lang('home.phone')" required="">
                             </div>
                             <div class="form-group">
                                 <textarea class="form-control textarea-contact" rows="3" id="comment" name="FB"
-                                    placeholder="Nội dung" required=""></textarea>
+                                    placeholder="@lang('home.content')" required=""></textarea>
                             </div>
                             <button class="btn btn-info btn-send my-3 my-md-0"> <span class="glyphicon glyphicon-send"></span>
-                                Gửi
+                                @lang('home.submit')
                             </button>
                         </form>
                     </div>
