@@ -7,7 +7,7 @@
             <div class="col-md-12 p-3 home-title">
                 <div class="d-md-inline-block text-md-left text-center text-primary title-content">
                     <div class="be-text-large d-md-inline-block d-block">
-                        <ul class="nolist be-breadcrumb text-uppercase d-inline-flex">
+                        <ul class="nolist be-breadcrumb text-uppercase d-inline-block">
                             <li><a href="{{ url('/') }}">Trang chủ</a></li>
                             <li><a href="{{ route('list_job') }}">Tuyển dụng</a></li>
                             <li><span>{{ $job->title }}</span></li>
@@ -22,7 +22,7 @@
     <div class="container">
         <div class="d-flex flex-wrap align-items-center mb-3 detail-company">
             <div class="col-md-2 text-center img-company py-2">
-                <img src="{{ $job->image }}" alt="{{ $job->title }}">
+                <img class="img-company-items" src="{{ $job->image }}" alt="{{ $job->title }}">
             </div>
             <div class="col-md-10 content-company py-2">
                 <ul class="nolist">
@@ -47,7 +47,9 @@
                     </label>
                 </div>
                 <div class="recruit-content">
-                    <span class="btn-sm btn-warning d-inline-block m-1">{{ $job->experience }}</span>
+                    <span class="btn-sm btn-warning d-inline-block m-1">@foreach(config('master_admin.kinhnghiem') as $k => $v)
+						{{ ($k == $job->experience) ? $v : ''}}
+                    @endforeach</span>
                     <span class="btn-sm btn-warning d-inline-block m-1">@foreach(config('master_admin.gioitinh') as $k => $v)
 						{{ ($k == $job->sex) ? $v : ''}}
                     @endforeach</span>
@@ -58,8 +60,9 @@
                     </span>
                     <span class="btn-sm btn-warning d-inline-block m-1">
 						@foreach(@$career as $k => $v)
-                    	{{ ($v->slug == $job->career) ? $v->name : '' }}</span>
+                    	{{ ($v->slug == $job->career) ? $v->name : '' }}
                     	@endforeach
+                    	</span>
                     <span class="btn-sm btn-warning d-inline-block m-1">{{ $job->vacancies }}</span>
                 </div>
             </div>
@@ -146,10 +149,9 @@
                     <div class="d-flex flex-wrap align-items-center mb-3 detail-company py-3">
                         <div class="col-lg-12">
                             <ul class="nolist list-job-another">
-                                <li><a href="#">Tuyển dụng nhân viên lao công</a></li>
-                                <li><a href="#">Tuyển dụng senior Java</a></li>
-                                <li><a href="#">Tuyển dụng Junior Java</a></li>
-                                <li><a href="#">Tuyển dụng Thực tập sinh</a></li>
+                                @foreach($job_lq as $key => $value)
+                                <li><a href="{{ route('job',['slug'=>$value->slug]) }}">{{ $value->title }}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>

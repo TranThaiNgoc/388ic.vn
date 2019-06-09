@@ -59,12 +59,26 @@ class IndexController extends Controller
 
     public function getJob($slug) {
         $job = DB::table('job')->where('slug', $slug)->first();
+        $job_lq = DB::table('job')->where('slug', '!=', $slug)->orderBy('id','desc')->limit(4)->get();
         $career = DB::table('career')->get();
-        return view('job', compact('configuration', 'job', 'career'));
+        return view('job', compact('configuration', 'job', 'career', 'job_lq'));
     }
 
     public function getSearch_project($slug) {
         $project = DB::table('project')->where('status', $slug)->paginate(6);
+        return view('list_project', compact('configuration', 'project'));
+    }
+
+    public function search_project(Request $request) {
+        $this->validate($request,
+            [
+                'name' => 'required',
+            ],
+            [
+                'name.required' => 'Tìm dự án không được để trống.',
+            ]);
+        $search = $request->name;
+        $project = DB::table('project')->where('name', 'LIKE', '%'.$search.'%')->paginate(6);
         return view('list_project', compact('configuration', 'project'));
     }
 }

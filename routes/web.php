@@ -24,6 +24,7 @@ Route::get('du-an-chi-tiet/{slug}.html', 'IndexController@getProject')->name('pr
 Route::get('danh-sach-tuyen-dung.html', 'IndexController@getListJob')->name('list_job');
 Route::get('tuyen-dung/{slug}.html', 'IndexController@getJob')->name('job');
 Route::get('du-an/{slug}.html', 'IndexController@getSearch_project')->name('search_project');
+Route::get('tim-du-an', 'IndexController@search_project')->name('search');
 
 Auth::routes();
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']],function(){

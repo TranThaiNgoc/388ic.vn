@@ -10,8 +10,8 @@
             <div class="col-md-12 p-3 home-title">
                 <div class="d-md-inline-block text-md-left text-center text-primary title-content">
                     <div class="be-text-large d-md-inline-block d-block">
-                        <ul class="nolist be-breadcrumb text-uppercase d-inline-flex">
-                            <li><a href="#">Trang chủ</a></li>
+                        <ul class="nolist be-breadcrumb text-uppercase d-inline-block">
+                            <li><a href="{{ url('/') }}">Trang chủ</a></li>
                             <li><span>Dự án</span></li>
                         </ul>
                     </div>

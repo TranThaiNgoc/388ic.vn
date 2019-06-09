@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Công ty Cổ phần Đầu tư và Xây lắp 388 - 388IC">
+    <meta name="author" content="">
+
+    <title>388ic.com</title>
     <base href="{{asset('')}}">
     <link rel="stylesheet" href="{{asset('home/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('home/css/font-awesome.css')}}">
@@ -16,7 +20,28 @@
 </script>
 <title>@yield('title')</title>
 </head>
-
+<style>
+    .card-body {
+        padding: 12px!important;
+    }
+    .be-breadcrumb li {
+        display: inline-block;
+    }
+    .img-company-items {
+        height: 100px;
+        object-fit: cover;
+    }
+    @media screen and (max-width: 996px) {
+        .img-company-items {
+            height: 60px;
+        }
+    }
+    @media screen and (max-width: 575px) {
+        .img-company-items {
+            height: auto!important;
+        }
+    }
+</style>
 <body>
     <section class="">
         <div class="container">
@@ -39,10 +64,10 @@
                             VI
                         </a>
                     </div>
-                    <form method="get" action="">
+                    <form method="GET" action="tim-du-an">
                         <div class="d-flex flex-direction-row justify-content-center">
                             <div class="searchbar">
-                                <input class="search_input rounded px-2" type="text" name="" placeholder="Search..."
+                                <input class="search_input rounded px-2" type="text" name="name" placeholder="Search..."
                                 style="border: 1px solid #ddd">
                                 <button class="search_icon btn-sm border-0 btn-info" type="submit"
                                 style="line-height: 1.4;">

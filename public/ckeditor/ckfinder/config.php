@@ -33,7 +33,7 @@ $config['authentication'] = function () {
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_licenseKey
 
 $config['licenseName'] = '388ic.vn';
-$config['licenseKey']  = 'QA3ADY9FM5QU5NC41CXGV1NVKS5K9';
+$config['licenseKey']  = 'J5853QN66UJDQ7BCELU1918T5G8D9';
 
 /*============================ CKFinder Internal Directory ============================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_privateDir
@@ -66,7 +66,7 @@ $config['images'] = array(
 $config['backends'][] = array(
     'name'         => 'default',
     'adapter'      => 'local',
-    'baseUrl'      => 'https://388ic.vn/storage/uploads',
+    'baseUrl'      => 'https://388ic.vn/uploads',
 //  'root'         => '', // Can be used to explicitly set the CKFinder user files directory.
     'chmodFiles'   => 0777,
     'chmodFolders' => 0755,
