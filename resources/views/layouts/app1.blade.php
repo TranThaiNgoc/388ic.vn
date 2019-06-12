@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{asset('home/css/font-awesome.css')}}">
     <link rel="stylesheet" href="{{asset('home/css/swiper.min.css')}}">
     <link rel="stylesheet" href="{{asset('home/css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('home/css/custom.css?v=1')}}">
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous"
     src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.3&appId=2046573405635669&autoLogAppEvents=1">
@@ -47,10 +48,13 @@
         <div class="container">
             <div class="d-flex flex-wrap">
                 <div class="flex-grow-1">
-                    <div class="logo bg-white d-inline-block">
+                    <div class="logo bg-white d-inline-block d-flex align-items-center">
                         <a id="logo" href="{{ url('/') }}" class="d-block py-1">
                             <img src="{{ $configuration->logo_website }}" alt="388ic.com">
                         </a>
+                        <div class="logo-name d-none d-md-block ml-2">
+                            388 INVESTMENT & CONSTRUCTION<br>JOINT STOCK COMPANY</span>
+                        </div>
                     </div>
                 </div>
                 <div class="header-right">
@@ -95,8 +99,19 @@
                         <ul class="nolist d-flex flex-wrap">
                             <li><a href="{{ url('/') }}">@lang('home.home_menu')</a></li>
                             <li>
-                                <a href="{{ route('about') }}">@lang('home.about_menu')
+                                <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@lang('home.about_menu')
                                 </a>
+                                <div class="dropdown-menu bg-light p-0 m-0" style="z-index: 10000;">
+                                    <ul class="nolist">
+                                        <li><a href="{{ route('about_company') }}">Giới thiệu chung</a></li>
+                                        <li><a href="{{ route('about_organization') }}">Sơ đồ tổ chức</a></li>
+                                        <li><a href="{{ route('about_manager') }}">Ban giám đốc</a></li>
+                                        <li><a href="{{ route('about_par') }}">Tầm nhìn sứ mệnh</a></li>
+                                        <li><a href="{{ route('about_develope') }}">Chiến lược phát triển</a></li>
+                                        <li><a href="{{ route('about_business') }}">Lĩnh vực kinh doanh</a></li>
+                                        <li><a href="{{ route('about_image') }}">Hình ảnh hoạt động</a></li>
+                                    </ul>
+                                </div>
                             </li>
                             <li>
                                 <a href="{{ route('list_news') }}">@lang('home.news_menu')
@@ -105,6 +120,16 @@
                             <li>
                                 <a href="{{ route('list_project') }}">@lang('home.project_menu')
                                 </a>
+                            </li>
+                            <li>
+                                <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Chứng chỉ
+                                </a>
+                                <div class="dropdown-menu bg-light p-0 m-0" style="z-index: 10000;">
+                                    <ul class="nolist">
+                                        <li><a href="#">ISO</a></li>
+                                        <li><a href="#">OHSAS</a></li>
+                                    </ul>
+                                </div>
                             </li>
                             <li>
                                 <a href="{{ route('list_job') }}">@lang('home.job_menu')
@@ -174,48 +199,18 @@
                     </div>
                 </div>
                 <div class="d-flex flex-wrap py-3">
-                    <ul class="nolist company-list">
-                        <li>
-                            <a href="#">
-                                <img src="{{asset('home/images/logo1.png')}}" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="{{asset('home/images/logo2.png')}}" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="{{asset('home/images/logo3.png')}}" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="{{asset('home/images/logo4.png')}}" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="{{asset('home/images/logo5.png')}}" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="{{asset('home/images/logo6.png')}}" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="{{asset('home/images/logo7.png')}}" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="{{asset('home/images/logo8.png')}}" alt="">
-                            </a>
-                        </li>
-                    </ul>
+                    <div class="swiper-container swiper-logo">
+                        <div class="swiper-wrapper logo-list">
+                            @foreach(@$parnter as $key => $value)
+                            <div class="swiper-slide">
+                                <img src="{{ $value->image }}" alt="{{ $value->name }}">
+                            </div>
+                            @endforeach
+                        </div>
+                        <!-- Add Arrows -->
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
                 </div>
             </div>
             <div class="footer-main">
@@ -246,6 +241,9 @@
                                     <span><u>Email:</u></span>
                                     <span>admin@388ic.com.vn</span>
                                 </li>
+                                <li>
+                                    <a href="http://mail.388ic.com.vn/Mondo/lang/sys/Login.aspx?Version=Desktop" target="_blank" class="text-white"><u>Webmail</u></a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -274,7 +272,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <span class="text-white">Copyright &copy; 2019 388ic Group.</span>
+                <span class="text-white">Copyright &copy; 2019 388IC</span>
                 <span class="text-dark">Design by <a href="#" class="text-dark">TyHon Company</a></span>
             </div>
         </div>

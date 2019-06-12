@@ -62,7 +62,30 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="{{ route('admin.configuration.add') }}"><i class="fas fa-sliders-h"></i> Cấu hình hệ thống<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fas fa-address-card"></i> Giới thiệu<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ route('admin.about_company') }}">Giới thiệu chung</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.about_organization') }}">Sơ đồ tổ chức</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.manager') }}">Ban giám đốc</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.par')}}">Tầm nhìn sứ mệnh</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.develope') }}">Chiến lượt phát triển</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.business') }}">Lĩnh lực kinh doanh</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.image_about') }}">Hình ảnh hoạt động</a>
+                                </li>
+                            </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
@@ -75,6 +98,14 @@
                                     <a href="{{ route('admin.user.add') }}">Thêm User</a>
                                 </li>
                             </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.partner') }}"><i class="fas fa-images"></i> Hình ảnh đối tác<span class="fa arrow"></span></a>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.configuration.add') }}"><i class="fas fa-sliders-h"></i> Cấu hình hệ thống<span class="fa arrow"></span></a>
                             <!-- /.nav-second-level -->
                         </li>
                         @elseif(in_array("admin",json_decode(Auth::user()->roles)))

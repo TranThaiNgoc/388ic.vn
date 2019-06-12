@@ -16,6 +16,13 @@ Route::get('locale/{locale}', function($locale) {
 });
 Route::get('/', 'IndexController@getIndex')->name('home');
 Route::get('gioi-thieu.html', 'IndexController@getAbout')->name('about');
+Route::get('gioi-thieu-chung.html', 'IndexController@getAbout_company')->name('about_company');
+Route::get('so-do-to-chuc.html', 'IndexController@getAbout_organization')->name('about_organization');
+Route::get('ban-giam-doc.html', 'IndexController@getManger')->name('about_manager');
+Route::get('tam-nhin-su-menh.html', 'IndexController@getPar')->name('about_par');
+Route::get('chien-luot-phat-trien.html', 'IndexController@getDevelope')->name('about_develope');
+Route::get('linh-vuc-kinh-doanh.html', 'IndexController@getBusiness')->name('about_business');
+Route::get('hinh-anh-hoat-dong.html', 'IndexController@getImage_about')->name('about_image');
 Route::get('lien-he.html', 'IndexController@getContact')->name('contact');
 Route::get('danh-sach-bai-viet.html', 'IndexController@getListNews')->name('list_news');
 Route::get('bai-viet-chi-tiet/{slug}.html', 'IndexController@getNewsPost')->name('news');
@@ -25,6 +32,7 @@ Route::get('danh-sach-tuyen-dung.html', 'IndexController@getListJob')->name('lis
 Route::get('tuyen-dung/{slug}.html', 'IndexController@getJob')->name('job');
 Route::get('du-an/{slug}.html', 'IndexController@getSearch_project')->name('search_project');
 Route::get('tim-du-an', 'IndexController@search_project')->name('search');
+Route::get('logo-doi-tac', 'IndexController@getLogo_parnter');
 
 Auth::routes();
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']],function(){
@@ -57,7 +65,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']],function(){
 		Route::get('delete/{id}', 'NewsController@getdelete')->name('admin.news.delete');
 	});
 
-	Route::group(['prefix' => 'career'],function(){
+	Route::group(['prefix' => 'career', 'middleware' => ['role:supperadmin']],function(){
 		Route::get('/', 'CareerController@getlist')->name('admin.career');
 		Route::get('add', 'CareerController@getadd')->name('admin.career.add');
 		Route::post('add', 'CareerController@postadd');
@@ -65,8 +73,34 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']],function(){
 		Route::post('edit/{id}', 'CareerController@postedit');
 		Route::get('delete/{id}', 'CareerController@getdelete')->name('admin.career.delete');
 	});
+	Route::group(['prefix' => 'about', 'middleware' => ['role:supperadmin']],function(){
+		Route::get('gioi-thieu-chung', 'AboutController@getAbout_company')->name('admin.about_company');
+		Route::post('gioi-thieu-chung', 'AboutController@postAbout_company');
+		Route::get('so-do-to-chuc', 'AboutController@getAbout_organization')->name('admin.about_organization');
+		Route::post('so-do-to-chuc', 'AboutController@postAbout_organization');
+		Route::get('ban-giam-doc', 'AboutController@postManager')->name('admin.manager');
+		Route::get('them-thanh-vien', 'AboutController@getAddManager')->name('admin.manager.add');
+		Route::post('them-thanh-vien', 'AboutController@postAddManager');
+		Route::get('sua-thanh-vien/{id}', 'AboutController@gettEditManager')->name('admin.manager_edit');
+		Route::post('sua-thanh-vien/{id}', 'AboutController@postEditManager');
+		Route::get('xoa-thanh-vien/{id}', 'AboutController@getDeleteManager')->name('admin.manager_delete');
+		Route::get('tam-nhin-su-menh', 'AboutController@getPar')->name('admin.par');
+		Route::post('tam-nhin-su-menh', 'AboutController@postPar');
+		Route::get('chien-luot-phat-trien', 'AboutController@getDevelope')->name('admin.develope');
+		Route::post('chien-luot-phat-trien', 'AboutController@postDevelope');
+		Route::get('linh-vuc-kinh-doanh', 'AboutController@getBusiness')->name('admin.business');
+		Route::post('linh-vuc-kinh-doanh', 'AboutController@postBusiness');
+		Route::get('hinh-anh-hoat-dong', 'AboutController@getImage_about')->name('admin.image_about');
+		Route::get('them-hinh-anh-hoat-dong', 'AboutController@getAdd_Image_about')->name('admin.add_image_about');
+		Route::post('them-hinh-anh-hoat-dong', 'AboutController@postAdd_Image_about');
+		Route::get('xoa-hinh-anh-hoat-dong/{id}', 'AboutController@getDelete_image_about')->name('admin.delete_image_about');
+		Route::get('them-logo-doi-tac', 'AboutController@getAdd_partner')->name('admin.add_partner');
+		Route::post('them-logo-doi-tac', 'AboutController@postAdd_partner');
+		Route::get('logo-doi-tac', 'AboutController@getPartner')->name('admin.partner');
+		Route::get('xoa-logo-doi-tac/{id}', 'AboutController@getDelete_parnter')->name('admin.delete_parnter');
+	});
 
-	Route::group(['prefix' => 'configuration'],function(){
+	Route::group(['prefix' => 'configuration', 'middleware' => ['role:supperadmin']],function(){
 		Route::get('/', 'ConfigurationController@getadd')->name('admin.configuration.add');
 		Route::post('/', 'ConfigurationController@postadd');
 	});

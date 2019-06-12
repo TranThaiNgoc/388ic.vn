@@ -10,7 +10,9 @@ class IndexController extends Controller
 {
     public function __construct(){
         $configuration = DB::table('configuration')->where('id', 1)->first();
+        $parnter = DB::table('image_partner')->get();
         view()->share('configuration',$configuration);
+        view()->share('parnter',$parnter);
     }
 
     public function getIndex() {
@@ -81,4 +83,47 @@ class IndexController extends Controller
         $project = DB::table('project')->where('name', 'LIKE', '%'.$search.'%')->paginate(6);
         return view('list_project', compact('configuration', 'project'));
     }
+
+    public function getAbout_company() {
+        $about_company = DB::table('about_company')->where('id', 1)->first();
+        $project = DB::table('project')->orderBy('id', 'desc')->limit(3)->get();
+        return view('about_company', compact('about_company', 'project'));
+    }
+
+    public function getAbout_organization() {
+        $about_organization = DB::table('about_company')->where('id', 1)->first();
+        $project = DB::table('project')->orderBy('id', 'desc')->limit(3)->get();
+        return view('about_organization', compact('about_organization', 'project'));
+    }
+
+    public function getManger() {
+        $manager = DB::table('manager')->orderBy('ordernum', 'asc')->get();
+        $project = DB::table('project')->orderBy('id', 'desc')->limit(3)->get();
+        return view('about_manager', compact('manager', 'project'));
+    }
+
+    public function getPar() {
+        $par = DB::table('about_content')->where('id', 1)->first();
+        $project = DB::table('project')->orderBy('id', 'desc')->limit(3)->get();
+        return view('about_par', compact('project', 'par'));
+    }
+
+    public function getDevelope() {
+        $develope = DB::table('about_content')->where('id', 2)->first();
+        $project = DB::table('project')->orderBy('id', 'desc')->limit(3)->get();
+        return view('about_develope', compact('project', 'develope'));
+    }
+
+    public function getBusiness() {
+        $business = DB::table('about_content')->where('id', 3)->first();
+        $project = DB::table('project')->orderBy('id', 'desc')->limit(3)->get();
+        return view('about_business', compact('project', 'business'));
+    }
+
+    public function getImage_about() {
+        $image = DB::table('about_image')->get();
+        $project = DB::table('project')->orderBy('id', 'desc')->limit(3)->get();
+        return view('about_image', compact('project', 'image'));
+    }
+
 }
