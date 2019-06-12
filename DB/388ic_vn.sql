@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2019 at 06:00 AM
+-- Generation Time: Jun 12, 2019 at 09:51 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.1.28
 
@@ -21,6 +21,54 @@ SET time_zone = "+00:00";
 --
 -- Database: `388ic.vn`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `about_company`
+--
+
+CREATE TABLE `about_company` (
+  `id` int(10) NOT NULL,
+  `content` text COLLATE utf8_unicode_ci,
+  `image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `image_organization` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `image_site_organization` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `about_content`
+--
+
+CREATE TABLE `about_content` (
+  `id` int(10) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `content` text COLLATE utf8_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `about_content`
+--
+
+INSERT INTO `about_content` (`id`, `name`, `slug`, `content`, `created_at`) VALUES
+(1, 'Tầm nhìn sứ mệnh', 'tam-nhin-su-menh', ' Chúng tôi đặt ra quyết tâm trở thành đối tác tin cậy và lâu dài với mọi đối tác trong và ngoài nước thông qua việc thúc đẩy triển vọng và giành được niềm tin của khách hàng ', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `about_image`
+--
+
+CREATE TABLE `about_image` (
+  `id` int(10) NOT NULL,
+  `image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -46,6 +94,28 @@ INSERT INTO `career` (`id`, `name`, `slug`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `certificate`
+--
+
+CREATE TABLE `certificate` (
+  `id` int(10) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `content` text COLLATE utf8_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `certificate`
+--
+
+INSERT INTO `certificate` (`id`, `name`, `slug`, `content`, `created_at`) VALUES
+(2, 'iso', 'iso', '<p>test</p>', '2019-06-12 04:38:40'),
+(3, 'Chứng chỉ OHSAS', 'chung-chi-ohsas', '<p>tesjgdasjdaskdhas</p>', '2019-06-12 04:53:12');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `configuration`
 --
 
@@ -62,6 +132,35 @@ CREATE TABLE `configuration` (
 
 INSERT INTO `configuration` (`id`, `logo_website`, `banner`, `created_at`) VALUES
 (1, 'https://388ic.vn/storage/uploads/155414-logo.jpg', 'https://388ic.vn/storage/uploads/738891-z1378426370986_9140a3b1e8caf43d5d64bc9aa7b6c68f.jpg', '2019-06-05 13:06:33');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `id` int(10) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `phone` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `content` text COLLATE utf8_unicode_ci,
+  `status` int(1) DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `image_partner`
+--
+
+CREATE TABLE `image_partner` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -98,6 +197,21 @@ CREATE TABLE `job` (
 INSERT INTO `job` (`id`, `title`, `slug`, `description`, `right`, `number`, `experience`, `degree`, `sex`, `deadline`, `job_requirements`, `request_profile`, `contact`, `phone`, `money`, `career`, `vacancies`, `image`, `created_at`) VALUES
 (1, 'Chuyên viên kinh doanh', 'chuyen-vien-kinh-doanh', '<p>- Ti&ecirc;́p c&acirc;̣n, h&ocirc;̃ trợ các khách hàng/doanh nghi&ecirc;̣p l&ecirc;n k&ecirc;́ hoạch các chương trình đào tạo phù hợp với mục ti&ecirc;u, y&ecirc;u c&acirc;̀u đặc thù ri&ecirc;̀n của từng khách hàng/doanh nghi&ecirc;̣p<br />\r\n- Đại di&ecirc;̣n c&ocirc;ng ty Quản lý, gặp gỡ, tư v&acirc;́n các chương trình đào tạo phù hợp với y&ecirc;u c&acirc;̀u, nhu c&acirc;̀u của khách hàng<br />\r\n- Phối hợp với ph&ograve;ng gi&aacute;o vụ, với hội đồng chuy&ecirc;n gia l&ecirc;n chương tr&igrave;nh đ&agrave;o tạo, sửa đổi, điều chỉnh cho ph&ugrave; hợp với mục ti&ecirc;u của DN , đ&oacute;ng g&oacute;p v&agrave;o sự ph&aacute;t triển của doanh nghiệp<br />\r\n- Phát tri&ecirc;̉n mở r&ocirc;̣ng m&ocirc;́i quan h&ecirc;̣ với khách hàng<br />\r\n- Tham gia vào các c&ocirc;ng vi&ecirc;̣c đàm phán, ký k&ecirc;́t hợp đ&ocirc;̀ng<br />\r\n- Ph&ocirc;́i hợp với các b&ocirc;̣ ph&acirc;̣n li&ecirc;n quan trong quá trình thực hi&ecirc;̣n hợp đ&ocirc;̀ng<br />\r\n- Hoàn thành chỉ tieey kinh doanh</p>', '<p>- MỨC LƯƠNG HẤP DẪN: LƯƠNG CB + PHỤ CẤP + HOA HỒNG (10%) + THƯỞNG<br />\r\n- Tổng thu nhập từ 15.000.000 &ndash; 20.000.000 VND/th&aacute;ng.<br />\r\n- Lương cơ bản: 5.000.000 &ndash; 7.000.000/th&aacute;ng (t&ugrave;y năng lực)<br />\r\n- C&oacute; cơ hội thăng tiến l&agrave;m trưởng nh&oacute;m, l&agrave;m trưởng ph&ograve;ng, l&agrave;m quản l&yacute;...<br />\r\n- Thưởng n&oacute;ng hấp dẫn h&agrave;ng th&aacute;ng<br />\r\n- Chế độ&nbsp;<a href=\"http://mywork.com.vn/tuyen-dung/3/bao-hiem.html\">bảo hiểm</a>&nbsp;đảm bảo theo qui định<br />\r\n- Được tham gia c&aacute;c kh&oacute;a đ&agrave;o tạo v&agrave; ph&aacute;t triển nghiệp vụ chuy&ecirc;n nghiệp về telesales, C&aacute;ch thức t&igrave;m kiếm kh&aacute;ch h&agrave;ng, kỹ năng&nbsp;<a href=\"http://mywork.com.vn/tuyen-dung/63/tu-van.html\">tư vấn</a>&nbsp;do KASH&nbsp;<a href=\"http://mywork.com.vn/tuyen-dung/90/ngos-to-chuc.html\">tổ chức</a><br />\r\n- Tiếp x&uacute;c l&agrave;m việc với c&aacute;c Doanh nh&acirc;n th&agrave;nh đạt.<br />\r\n- Được tham dự c&aacute;c kh&oacute;a học v&agrave; c&aacute;c buổi chia sẻ của những chuy&ecirc;n gia h&agrave;ng đầu Việt Nam<br />\r\n- X&eacute;t tăng lương 2 lần trong năm<br />\r\n- Tăng lương đột xuất khi đạt th&agrave;nh t&iacute;ch tốt, ho&agrave;n th&agrave;nh c&ocirc;ng việc được giao.<br />\r\n- Chế độ ph&uacute;c lợi: hiếu, hỉ, sinh nhật, nghỉ m&aacute;t, kh&aacute;m sức khỏe, &hellip;</p>', '2', 'banam', 'caodang', 'name', '2019-06-20', '<p>- Nam/Nữ tốt nghiệp đại học, cao đẳng, trung cấp :<br />\r\n- Giong n&oacute;i dễ nghe, kh&ocirc;ng ngọng, &acirc;m điệu r&otilde; rang<br />\r\n- T&aacute;c phong chuy&ecirc;n nghiệp, nhiệt t&igrave;nh, c&oacute; tr&aacute;ch nhiệm với c&ocirc;ng việc<br />\r\n- C&oacute; laptop c&aacute; nh&acirc;n<br />\r\n- Chưa c&oacute; kinh nghiệm được đ&agrave;o tạo<br />\r\n- Ưu Ti&ecirc;n C&oacute; kinh nghiệm l&agrave;m việc từ 6 th&aacute;ng - 1 năm trở l&ecirc;n (To&agrave;n thời gian) ở c&aacute;c lĩnh vực Telesales v&agrave;&nbsp;<a href=\"http://mywork.com.vn/tuyen-dung/57/dich-vu.html\">Dịch vụ</a>&nbsp;kh&aacute;ch h&agrave;ng</p>', '<p>- Đơn xin việc.<br />\r\n- Sơ yếu l&yacute; lịch.<br />\r\n- Hộ khẩu, chứng minh nh&acirc;n d&acirc;n v&agrave; giấy kh&aacute;m sức khỏe.<br />\r\n- C&aacute;c bằng cấp c&oacute; li&ecirc;n quan.<br />\r\nC&ocirc;ng ty CP đ&acirc;̀u tư và đào tạo Kash Vi&ecirc;̣t Nam<br />\r\nĐịa chỉ: S&ocirc;́ 57A ngõ 358 Bùi Xương Trạch, Thanh Xu&acirc;n, Hà N&ocirc;̣i</p>', 'Thái Ngọc', '0933411292', '>20trieu', 'co-khi', 'IT', 'https://388ic.vn/storage/uploads/995182-logo.jpg', '2019-06-06 05:38:53'),
 (2, 'Trưởng Phòng Kinh Doanh BĐS Đất Nền - Thu Nhập Siêu Khủng', 'truong-phong-kinh-doanh-bds-dat-nen-thu-nhap-sieu-khung', '<p>- Lập kế hoạch kinh doanh cho từng thời điểm của từng dự &aacute;n.<br />\r\n- Hỗ trợ nh&acirc;n vi&ecirc;n kinh doanh thực hiện c&ocirc;ng việc đạt hiệu quả tốt nhất.<br />\r\n- Hỗ trợ&nbsp;<a href=\"http://mywork.com.vn/tuyen-dung/63/tu-van.html\">tư vấn</a>&nbsp;- đ&agrave;m ph&aacute;n v&agrave; chốt hợp đồng với kh&aacute;ch h&agrave;ng.<br />\r\n- Kiểm so&aacute;t qu&aacute; tr&igrave;nh thanh to&aacute;n của kh&aacute;ch h&agrave;ng với c&ocirc;ng ty<br />\r\n- Đ&agrave;o tạo huấn luyện nh&acirc;n vi&ecirc;n kinh doanh am hiểu c&aacute;c sản phẩm của c&ocirc;ng ty.<br />\r\n- Đ&ocirc;n đốc nh&acirc;n vi&ecirc;n thực hiện c&ocirc;ng t&aacute;c b&aacute;n h&agrave;ng đạt hiệu quả theo kế hoạch c&ocirc;ng ty đề ra.<br />\r\n- Chịu tr&aacute;ch nhiệm trước Ban Gi&aacute;m Đốc về hiệu quả kinh doanh của to&agrave;n ph&ograve;ng.</p>', '<p>- ĐƯỢC C&Ocirc;NG TY HỖ TRỢ ĐỘI NGŨ SALE CHẤT LƯỢNG.<br />\r\n- Lương cơ bản 15 - 50 triệu/ th&aacute;ng + Phụ cấp cơm trưa.<br />\r\n- Ch&iacute;nh s&aacute;ch hoa hồng hấp dẫn, cạnh tranh, gia tăng theo doanh thu thực đạt.<br />\r\n- Thưởng n&oacute;ng theo dự &aacute;n v&agrave; Thưởng theo th&aacute;ng, qu&yacute;, năm.<br />\r\n- Hưởng đầy đủ quyền lợi BHXH, BHYT, BHTN theo luật lao động VN.<br />\r\n- Du lịch định kỳ trong v&agrave; ngo&agrave;i nước 3-4 lần / năm; C&aacute;c hoạt động d&atilde; ngoại;&nbsp;<a href=\"http://mywork.com.vn/tuyen-dung/90/ngos-to-chuc.html\">Tổ chức</a>&nbsp;sinh nhật cho c&aacute;n bộ-nh&acirc;n vi&ecirc;n, tiệc c&ocirc;ng ty&nbsp;<br />\r\n- Nhiều cơ hội thăng tiến do C&ocirc;ng ty đang tr&ecirc;n đ&agrave; định hướng ph&aacute;t triển.</p>', '1', 'chuacokinhnghiem', 'laodongphothong', 'name', '2019-06-30', '<p>- Độ tuổi: 23 &ndash; 32 tuổi.&nbsp;<br />\r\n- Giới t&iacute;nh: Nam / Nữ (Ưu ti&ecirc;n c&oacute; ngoại h&igrave;nh).<br />\r\n- Đam m&ecirc; c&ocirc;ng việc kinh doanh trong lĩnh vực bất động sản,<br />\r\n- C&oacute; Kinh nghiệm l&agrave;m việc: &Iacute;t nhất 2 năm trong lĩnh vực bất động sản v&agrave; 1 năm kinh nghiệm quản l&iacute; nh&acirc;n vi&ecirc;n kinh doanh.<br />\r\n- Khả năng lập kế hoạch v&agrave; triển khai kế hoạch hiệu quả<br />\r\n- Khả năng quản l&yacute; huấn luyện đ&agrave;o tạo nh&acirc;n vi&ecirc;n mới trong qu&aacute; tr&igrave;nh l&agrave;m việc.<br />\r\n- Nhanh nhạy, giao tiếp tốt v&agrave; c&oacute; khả năng chịu &aacute;p lực c&ocirc;ng việc cao</p>', '<p>- Đơn xin việc. - Sơ yếu l&yacute; lịch. - Hộ khẩu, chứng minh nh&acirc;n d&acirc;n v&agrave; giấy kh&aacute;m sức khỏe. - C&aacute;c bằng cấp c&oacute; li&ecirc;n quan.</p>', 'Thái Ngọc', '0933411292', '1-3trieu', 'ke-toan', 'IT', 'https://388ic.vn/storage/uploads/550117-doanhnghiep.jpg', '2019-06-06 05:39:03');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `manager`
+--
+
+CREATE TABLE `manager` (
+  `id` int(10) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `location` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ordernum` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -209,7 +323,8 @@ CREATE TABLE `project` (
 
 INSERT INTO `project` (`id`, `name`, `slug`, `content`, `image1`, `image2`, `image3`, `image4`, `status`, `created_at`) VALUES
 (2, 'ngoc c', 'ngoc-c', '<p>Thực hiện v&agrave; quản l&yacute; c&aacute;c chiến dịch quảng c&aacute;o trực tuyến<br />\r\n- Theo d&otilde;i v&agrave; tối ưu hiệu quả quảng c&aacute;o, tối ưu gi&aacute; v&agrave; tỉ lệ chuyển đổi<br />\r\n- R&agrave; so&aacute;t v&agrave; thay đổi để ph&ugrave; hợp với y&ecirc;u cầu từng chiến dịch<br />\r\n- Thực hiện b&aacute;o c&aacute;o đ&aacute;nh gi&aacute; hiệu quả c&aacute;c chiến dịch truyền th&ocirc;ng k&ecirc;nh Digital sử dụng c&aacute;c c&ocirc;ng cụ đo lường. Đề xuất phương &aacute;n cải thiện/đổi mới tr&igrave;nh L&atilde;nh đạo.<br />\r\n- Nghi&ecirc;n cứu, cập nhật c&aacute;c t&iacute;nh năng, thủ thuật mới nhất từ facebook, google, c&aacute;c h&igrave;nh thức quảng c&aacute;o online mới&hellip;<br />\r\n- L&agrave;m việc với c&aacute;c ads network<br />\r\n- Quản trị website, fanpage, youtube,&hellip; về th&ocirc;ng tin v&agrave; h&igrave;nh ảnh, đảm bảo độ ổn định cho c&aacute;c k&ecirc;nh n&agrave;y<br />\r\n- Nắm r&otilde; quy định&nbsp;<a href=\"http://mywork.com.vn/tuyen-dung/71/ky-thuat.html\">kỹ thuật</a>&nbsp;của từng k&ecirc;nh digital để tối ưu h&oacute;a nội dung, h&igrave;nh ảnh v&agrave; chất lượng quảng c&aacute;o.<br />\r\n- Ph&aacute;t triển c&aacute;c k&ecirc;nh quảng c&aacute;o mới tr&ecirc;n nền tảng digital</p>', 'https://388ic.vn/storage/uploads/299004-about4.png', 'https://388ic.vn/storage/uploads/518907-gallery2.png', 'https://388ic.vn/storage/uploads/224949-gallery5.png', 'https://388ic.vn/storage/uploads/641534-gallery6.png', 'dathicong', '2019-06-07 03:06:26'),
-(4, 'ngoc', 'ngoc', '<p>hasgda</p>', 'https://388ic.vn/storage/uploads/189894-gallery4.png', NULL, NULL, NULL, 'dangthicong', '2019-06-06 09:06:20');
+(4, 'ngoc', 'ngoc', '<p>hasgda</p>', 'https://388ic.vn/storage/uploads/189894-gallery4.png', NULL, NULL, NULL, 'dangthicong', '2019-06-06 09:06:20'),
+(5, 'Thái Ngọc', 'thai-ngoc', '<p>g</p>', 'https://388ic.vn/storage/uploads/20803-183-722f32fd7a987e09f69956511f62b79b.jpg', NULL, NULL, NULL, 'dathicong', '2019-06-10 08:06:08');
 
 -- --------------------------------------------------------
 
@@ -245,9 +360,33 @@ INSERT INTO `users` (`id`, `name`, `email`, `phone`, `address`, `roles`, `type`,
 --
 
 --
+-- Indexes for table `about_company`
+--
+ALTER TABLE `about_company`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `about_content`
+--
+ALTER TABLE `about_content`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `about_image`
+--
+ALTER TABLE `about_image`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `career`
 --
 ALTER TABLE `career`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `certificate`
+--
+ALTER TABLE `certificate`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -257,9 +396,27 @@ ALTER TABLE `configuration`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `image_partner`
+--
+ALTER TABLE `image_partner`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `job`
 --
 ALTER TABLE `job`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `manager`
+--
+ALTER TABLE `manager`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -298,10 +455,34 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `about_company`
+--
+ALTER TABLE `about_company`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `about_content`
+--
+ALTER TABLE `about_content`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `about_image`
+--
+ALTER TABLE `about_image`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `career`
 --
 ALTER TABLE `career`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `certificate`
+--
+ALTER TABLE `certificate`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `configuration`
@@ -310,10 +491,28 @@ ALTER TABLE `configuration`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `image_partner`
+--
+ALTER TABLE `image_partner`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `job`
 --
 ALTER TABLE `job`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `manager`
+--
+ALTER TABLE `manager`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `media`
@@ -337,7 +536,7 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `project`
 --
 ALTER TABLE `project`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
