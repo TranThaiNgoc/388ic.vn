@@ -10,9 +10,11 @@ class IndexController extends Controller
 {
     public function __construct(){
         $configuration = DB::table('configuration')->where('id', 1)->first();
+        $certificates = DB::table('certificate')->get();
         $parnter = DB::table('image_partner')->get();
         view()->share('configuration',$configuration);
         view()->share('parnter',$parnter);
+        view()->share('certificates',$certificates);
     }
 
     public function getIndex() {
@@ -24,6 +26,39 @@ class IndexController extends Controller
 
     public function getAbout() {
     	return view('about', compact('configuration'));
+    }
+
+    public function postContact(Request $request) {
+        $this->validate($request,
+            [
+                'name' => 'required|name|min:3|max:255',
+                'email' => 'required|email',
+                'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:11',
+                'content' => 'required',
+            ],
+            [
+                'name.required' => 'Vui lòng không để trống tên.',
+                'name.name' => 'Tên không hợp lệ.',
+                'name.min' => 'Tên có độ dài tối thiểu từ 3 đến 225 ký tự.',
+                'name.max' => 'Tên có độ dài tối thiểu từ 3 đến 225 ký tự.',
+                'email.required' => 'Email không được để trống.',
+                'email.email' => 'Email không hợp lệ.',
+                'phone.required' => 'Số điện thoại không được để trống.',
+                'phone.regex' => 'Số điện thoại không hợp lệ.',
+                'phone.min' => 'Số điện thoại có đồ dài từ 10 đến 11 số.',
+                'phone.max' => 'Số điện thoại có đồ dài từ 10 đến 11 số.',
+                'content.required' => 'Nội dung vui lòng không được để trống.',
+            ]);
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'content' => $request->content,
+            'created_at' => date('Y-m-d H:i:s'),
+        ];
+        DB::table('feedback')->insert($data);
+
+        return redirect()->back()->with('thongbao', 'Phản hồi thành công.');
     }
 
     public function getContact() {
@@ -126,4 +161,9 @@ class IndexController extends Controller
         return view('about_image', compact('project', 'image'));
     }
 
+    public function getCertificate($id) {
+        $certificate = DB::table('certificate')->where('slug', $id)->first();
+        $project = DB::table('project')->orderBy('id', 'desc')->limit(3)->get();
+        return view('certificate', compact('certificate', 'project'));
+    }
 }

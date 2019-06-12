@@ -8,7 +8,7 @@
     <meta name="description" content="Công ty Cổ phần Đầu tư và Xây lắp 388 - 388IC">
     <meta name="author" content="">
 
-    <title>388ic.com</title>
+    <title>388ic.vn</title>
     <base href="{{asset('')}}">
     <link rel="stylesheet" href="{{asset('home/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('home/css/font-awesome.css')}}">
@@ -103,13 +103,13 @@
                                 </a>
                                 <div class="dropdown-menu bg-light p-0 m-0" style="z-index: 10000;">
                                     <ul class="nolist">
-                                        <li><a href="{{ route('about_company') }}">Giới thiệu chung</a></li>
-                                        <li><a href="{{ route('about_organization') }}">Sơ đồ tổ chức</a></li>
-                                        <li><a href="{{ route('about_manager') }}">Ban giám đốc</a></li>
-                                        <li><a href="{{ route('about_par') }}">Tầm nhìn sứ mệnh</a></li>
-                                        <li><a href="{{ route('about_develope') }}">Chiến lược phát triển</a></li>
-                                        <li><a href="{{ route('about_business') }}">Lĩnh vực kinh doanh</a></li>
-                                        <li><a href="{{ route('about_image') }}">Hình ảnh hoạt động</a></li>
+                                        <li><a href="{{ route('about_company') }}">@lang('home.general_introduction')</a></li>
+                                        <li><a href="{{ route('about_organization') }}">@lang('home.organizational_chart')</a></li>
+                                        <li><a href="{{ route('about_manager') }}">@lang('home.board_of_directors')</a></li>
+                                        <li><a href="{{ route('about_par') }}">@lang('home.vision_mission')</a></li>
+                                        <li><a href="{{ route('about_develope') }}">@lang('home.development_strategy')</a></li>
+                                        <li><a href="{{ route('about_business') }}">@lang('home.business_areas')</a></li>
+                                        <li><a href="{{ route('about_image') }}">@lang('home.active_image')</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -122,12 +122,13 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Chứng chỉ
+                                <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@lang('home.certificate')
                                 </a>
                                 <div class="dropdown-menu bg-light p-0 m-0" style="z-index: 10000;">
                                     <ul class="nolist">
-                                        <li><a href="#">ISO</a></li>
-                                        <li><a href="#">OHSAS</a></li>
+                                        @foreach(@$certificates as $value)
+                                        <li><a href="{{ route('certificate',['slug'=>$value->slug]) }}">{{ $value->name }}</a></li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </li>
@@ -222,20 +223,16 @@
                         <div class="footer-body">
                             <ul class="nolist">
                                 <li>
-                                    <span><u>@lang('home.representative_office'):</u></span>
-                                    <span>No 20A – Pham Van Dinh Street – Thang Nhat Ward – Vung Tau City – Ba Ria Vung Tau Province.</span>
-                                </li>
-                                <li>
                                     <span><u>@lang('home.headquarters'):</u></span>
-                                    <span>No 2/14 - Bao Phuc Street – Dang Hai Ward - Ngo Quyen Dist - Hai Phong City</span>
+                                    <span>20A PHẠM VĂN DINH - P.THẮNG NHẤT - TP.VŨNG TÀU</span>
                                 </li>
                                 <li>
                                     <span><u>@lang('home.phone'):</u></span>
-                                    <span> +84 2253 722 126</span>
+                                    <a class="text-white" href="tel:02543.585.388">02543.585.388</a>
                                 </li>
                                 <li>
-                                    <span><u>@lang('home.phone'):</u></span>
-                                    <span> +84 313 851 266</span>
+                                    <span><u>Fax:</u></span>
+                                    <span> 02543.585.388</span>
                                 </li>
                                 <li>
                                     <span><u>Email:</u></span>

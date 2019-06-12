@@ -339,4 +339,44 @@ class AboutController extends Controller
         return redirect()->back()->with('thongbao', 'Xóa logo đối tác thành công.');
     }
 
+    public function getFeedback() {
+        $feedback = DB::table('feedback')->get();
+        return view('admin.feedback.list', compact('feedback'));
+    }
+
+    public function getEdit_Feedback($id) {
+        $feedback = DB::table('feedback')->where('id', $id)->first();
+        if(is_null($feedback)) {
+            abort('404');
+        }
+        return view('admin.feedback.edit', compact('feedback'));
+    }
+
+    public function postEdit_Feedback(Request $request, $id) {
+        $this->validate($request,
+            [
+                'status' => 'required',
+            ],
+            [
+                'status.required' => 'Trạng thái phản hồi không được để trống.',
+            ]);
+        $data = [
+            'status' => $request->status,
+            'created_at' => date('Y-m-d H:i:s'),
+        ];
+        DB::table('feedback')->where('id', $id)->update($data);
+
+        return redirect()->back()->with('thongbao', 'Đã có phản hồi.');
+    }
+
+    public function postDelete_Feedback($id) {
+        $feedback = DB::table('feedback')->where('id', $id);
+        if(is_null($feedback)) {
+            abort('404');
+        }
+        $feedback->delete();
+
+        return redirect()->back()->with('thongbao', 'Xóa phản hồi thành công.');
+    }
+
 }

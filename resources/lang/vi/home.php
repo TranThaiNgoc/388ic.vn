@@ -28,5 +28,13 @@ return[
 	'name' => 'Họ và tên',
 	'content' => 'Nội dung',
 	'submit' => 'Gửi đi',
+	'certificate' => 'Chứng chỉ',
+	'general_introduction' => 'Giới thiệu chung',
+	'organizational_chart' => 'Sơ đồ tổ chức',
+	'board_of_directors' => 'Ban giám đốc',
+	'vision_mission' => 'Tầm nhìn sứ mệnh',
+	'development_strategy' => 'Chiến lược phát triển',
+	'business_areas' => 'Lĩnh vực kinh doanh',
+	'active_image' => 'Hình ảnh hoạt động',
 
 ];

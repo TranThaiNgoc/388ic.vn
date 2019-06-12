@@ -30,4 +30,12 @@ return[
 	'name' => 'First and last name',
 	'content' => 'Content',
 	'submit' => 'Submit',
+	'certificate' => 'Certificate',
+	'general_introduction' => 'General introduction',
+	'organizational_chart' => 'Organizational chart',
+	'board_of_directors' => 'Board of directors',
+	'vision_mission' => 'Vision, Mission',
+	'development_strategy' => 'Development strategy',
+	'business_areas' => 'Business areas',
+	'active_image' => 'Active image',
 ];

@@ -18,6 +18,11 @@
             <div class="col-12 py-3">
                 <h1 class="header-title text-warning">@lang('home.contact_menu')</h1>
                 <hr>
+                @if(session('thongbao'))
+                <div class="alert alert-success">
+                    {{session('thongbao')}}
+                </div>
+                @endif
             </div>
             <div class="col-12" id="parent">
                 <div class="row">
@@ -28,22 +33,27 @@
                     </div>
                     <div class="col-md-6 order-0 order-md-1">
                         <form action="" class="contact-form" method="post">
+                            @csrf
                             <div class="form-group">
-                                <input type="text" class="form-control w-100 mr-0" id="name" name="nm" placeholder="@lang('home.name')"
+                                <input type="text" class="form-control w-100 mr-0" id="name" name="name" placeholder="@lang('home.name')"
                                     required="" autofocus="">
+                                <span class="text-danger">{{ $errors->first('name') }}</span>
                             </div>
                             <div class="form-group form_left">
-                                <input type="email" class="form-control w-100 mr-0" id="email" name="em" placeholder="Email"
+                                <input type="email" class="form-control w-100 mr-0" id="email" name="email" placeholder="Email"
                                     required="">
+                                <span class="text-danger">{{ $errors->first('email') }}</span>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" class="form-control w-100 mr-0" id="phone" 
+                                <input type="number" class="form-control w-100 mr-0" name="phone" id="phone" 
                                     placeholder="@lang('home.phone')" required="">
+                                <span class="text-danger">{{ $errors->first('phone') }}</span>
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control textarea-contact" rows="3" id="comment" name="FB"
-                                    placeholder="@lang('home.content')" required=""></textarea>
+                                <textarea class="form-control textarea-contact" rows="3" id="comment" name="content"
+                                    placeholder="@lang('home.content')" required="">{{ old('content') }}</textarea>
+                                <span class="text-danger">{{ $errors->first('content') }}</span>
                             </div>
                             <button class="btn btn-info btn-send my-3 my-md-0"> <span class="glyphicon glyphicon-send"></span>
                                 @lang('home.submit')

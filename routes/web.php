@@ -24,6 +24,7 @@ Route::get('chien-luot-phat-trien.html', 'IndexController@getDevelope')->name('a
 Route::get('linh-vuc-kinh-doanh.html', 'IndexController@getBusiness')->name('about_business');
 Route::get('hinh-anh-hoat-dong.html', 'IndexController@getImage_about')->name('about_image');
 Route::get('lien-he.html', 'IndexController@getContact')->name('contact');
+Route::post('lien-he.html', 'IndexController@postContact');
 Route::get('danh-sach-bai-viet.html', 'IndexController@getListNews')->name('list_news');
 Route::get('bai-viet-chi-tiet/{slug}.html', 'IndexController@getNewsPost')->name('news');
 Route::get('danh-sach-du-an.html', 'IndexController@getListProject')->name('list_project');
@@ -32,6 +33,8 @@ Route::get('danh-sach-tuyen-dung.html', 'IndexController@getListJob')->name('lis
 Route::get('tuyen-dung/{slug}.html', 'IndexController@getJob')->name('job');
 Route::get('du-an/{slug}.html', 'IndexController@getSearch_project')->name('search_project');
 Route::get('tim-du-an', 'IndexController@search_project')->name('search');
+Route::get('chung-chi.html', 'IndexController@getList_Certificate')->name('list_certificate');
+Route::get('chung-chi/{slug}.html', 'IndexController@getCertificate')->name('certificate');
 Route::get('logo-doi-tac', 'IndexController@getLogo_parnter');
 
 Auth::routes();
@@ -98,6 +101,20 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']],function(){
 		Route::post('them-logo-doi-tac', 'AboutController@postAdd_partner');
 		Route::get('logo-doi-tac', 'AboutController@getPartner')->name('admin.partner');
 		Route::get('xoa-logo-doi-tac/{id}', 'AboutController@getDelete_parnter')->name('admin.delete_parnter');
+		Route::get('phan-hoi', 'AboutController@getFeedback')->name('admin.feedback');
+		Route::get('sua-phan-hoi/{id}', 'AboutController@getEdit_Feedback')->name('admin.edit_feedback');
+		Route::post('sua-phan-hoi/{id}', 'AboutController@postEdit_Feedback');
+		Route::get('xoa-phan-hoi/{id}', 'AboutController@postDelete_Feedback')->name('admin.delete_feedback');
+	});
+
+	Route::group(['prefix' => 'certificate', 'middleware' => ['role:supperadmin']],function(){
+		Route::get('danh-sach-chung-chi', 'CertificateController@getList_certificate')->name('admin.list_certificate');
+		Route::get('them-chung-chi', 'CertificateController@getAdd_certificate')->name('admin.add_certificate');
+		Route::post('them-chung-chi', 'CertificateController@postAdd_certificate');
+		Route::get('sua-chung-chi/{id}', 'CertificateController@getEdit_certificate')->name('admin.edit_certificate');
+		Route::post('sua-chung-chi/{id}', 'CertificateController@postEdit_certificate');
+		Route::get('xoa-chung-chi/{id}', 'CertificateController@getDelete_certificate')->name('admin.delete_certificate');
+
 	});
 
 	Route::group(['prefix' => 'configuration', 'middleware' => ['role:supperadmin']],function(){

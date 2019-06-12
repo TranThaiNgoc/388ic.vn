@@ -89,6 +89,10 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
+                            <a href="{{ route('admin.list_certificate') }}"><i class="fas fa-stamp"></i> Chứng chỉ<span class="fa arrow"></span></a>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
                             <a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -102,6 +106,10 @@
                         </li>
                         <li>
                             <a href="{{ route('admin.partner') }}"><i class="fas fa-images"></i> Hình ảnh đối tác<span class="fa arrow"></span></a>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.feedback') }}"><i class="fas fa-comments"></i> Phần hổi khách hàng<span class="fa arrow"></span></a>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
