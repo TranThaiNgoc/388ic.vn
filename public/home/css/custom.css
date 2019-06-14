@@ -64,6 +64,9 @@ table tr td {
   font-weight: bold;
   font-size: 14pt;
 }
+.card-top img {
+  height: 160px!important;
+}
 @media screen and (max-width: 575px) {
   .card-top-direc img {
     height: auto;

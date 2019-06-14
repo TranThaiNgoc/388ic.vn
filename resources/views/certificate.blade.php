@@ -8,8 +8,8 @@
                 <div class="d-md-inline-block text-md-left text-center text-primary title-content">
                     <div class="be-text-large d-md-inline-block d-block">
                         <ul class="nolist be-breadcrumb text-uppercase d-inline-flex">
-                            <li><a href="{{ url('/') }}">Trang chủ</a></li>
-                            <li><span>Liên Hệ</span></li>
+                            <li><a href="{{ url('/') }}">@lang('home.home_menu')</a></li>
+                            <li><span>@lang('home.certificate')</span></li>
                         </ul>
                     </div>
                 </div>
@@ -22,25 +22,44 @@
                 {!! $certificate->content !!}
             </div>
             <div class="col-md-3">
-                <div class="d-block text-center">
-                    <h5>Dự Án Liên Quan</h5>
-                </div>
-                <div class="row">
-                	@foreach(@$project as $value)
-                    <div class="col-md-12 col-12">
-                        <div class="card border mb-2 card-hover-primary">
-                            <div class="card-another-top">
-                                <a href="{{ route('project',['slug'=>$value->slug]) }}" class="w-100">
-                                    <img class="product-image w-100 p-2" src="{{ $value->image1 }}" alt="{{ $value->name }}">
-                                </a>
-                            </div>
-                            <div class="card-another-body text-center">
-                                <a href="{{ route('project',['slug'=>$value->slug]) }}" class="text-uppercase p-2 d-block">{{ $value->name }}</a>
-                            </div>
+                        <div class="d-block text-center">
+                            <h5>@lang('home.new_project')</h5>
                         </div>
-                    </div>
-                    @endforeach
-                </div>
+                        @if(Session::get('locale') == "vi")
+                        <div class="row">
+                            @foreach(@$project as $value)
+                            <div class="col-md-12 col-12">
+                                <div class="card border mb-2 card-hover-primary">
+                                    <div class="card-another-top">
+                                        <a href="{{ route('project',['slug'=>$value->slug]) }}" class="w-100">
+                                            <img class="product-image w-100 p-2" src="{{ $value->image1 }}" alt="{{ $value->name }}">
+                                        </a>
+                                    </div>
+                                    <div class="card-another-body text-center">
+                                        <a href="{{ route('project',['slug'=>$value->slug]) }}" class="text-uppercase p-2 d-block">{{ $value->name }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                        @elseif(Session::get('locale') == "en")
+                        <div class="row">
+                            @foreach(@$project as $value)
+                            <div class="col-md-12 col-12">
+                                <div class="card border mb-2 card-hover-primary">
+                                    <div class="card-another-top">
+                                        <a href="{{ route('project',['slug'=>$value->slug]) }}" class="w-100">
+                                            <img class="product-image w-100 p-2" src="{{ $value->image1 }}" alt="{{ $value->name_en }}">
+                                        </a>
+                                    </div>
+                                    <div class="card-another-body text-center">
+                                        <a href="{{ route('project',['slug'=>$value->slug]) }}" class="text-uppercase p-2 d-block">{{ $value->name_en }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                        @endif
             </div>
         </div>
     </section>

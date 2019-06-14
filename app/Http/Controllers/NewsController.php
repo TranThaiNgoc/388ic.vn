@@ -30,19 +30,26 @@ class NewsController extends Controller
     public function postadd(Request $request) {
     	$this->validate($request, 
     		[
-    			'name' => 'required|max:255|min:6|name',
+    			'name' => 'required|max:255|min:6',
     			'summary' => 'required',
     			'content' => 'required',
+                'name_en' => 'required|max:255|min:6',
+                'summary_en' => 'required',
+                'content_en' => 'required',
     			'image' => 'image|required',
     			'status' => 'required'
     		],
     		[
     			'name.required' => 'Tên bài viết không được để trống.',
-    			'name.name' => 'tên bài viết không hợp lệ.',
     			'name.max' => 'Tên bài viết có độ dài từ 6 đến 255 ký tự.',
     			'name.min' => 'Tên bài viết có độ dài từ 6 đến 255 ký tự.',
+                'name_en.required' => 'Tên bài viết tiếng anh không được để trống.',
+                'name_en.max' => 'Tên bài viết tiếng anh có độ dài từ 6 đến 255 ký tự.',
+                'name_en.min' => 'Tên bài viết tiếng anh có độ dài từ 6 đến 255 ký tự.',
     			'summary.required' => 'Tóm tắt bài viết không được để trống.',
+                'summary_en.required' => 'Tóm tắt bài viết tiếng anh không được để trống.',
     			'content.required' => 'Nội dung bài viết không được để trống.',
+                'content_en.required' => 'Nội dung bài viết tiếng anh không được để trống.',
     			'image.image' => 'Hình bài viết không chính xác.',
     			'image.required' => 'Hình bài viết không được để trống',
     			'status.required' => 'Trạng thái bài viết không được để trống',
@@ -50,9 +57,12 @@ class NewsController extends Controller
 
     	$data = [
     		'name' => $request->name,
+            'name_en' => $request->name_en,
     		'slug' =>str_slug(trim($request->name)),
     		'summary' => $request->summary,
+            'summary_en' => $request->summary_en,
     		'content' => $request->content,
+            'content_en' => $request->content_en,
     		'view' => 0,
     		'status' => $request->status,
     		'created_at' => date('Y-m-d H:m:s'),
@@ -83,33 +93,43 @@ class NewsController extends Controller
 
     public function postedit(Request $request, $id) {
     	$this->validate($request, 
-    		[
-    			'name' => 'required|max:255|min:6|name',
-    			'summary' => 'required',
-    			'content' => 'required',
-    			'image' => 'image',
-    			'status' => 'required'
-    		],
-    		[
-    			'name.required' => 'Tên bài viết không được để trống.',
-    			'name.max' => 'Tên bài viết có độ dài từ 6 đến 255 ký tự.',
-    			'name.min' => 'Tên bài viết có độ dài từ 6 đến 255 ký tự.',
-    			'name.name' => 'Tên bài viết không hợp lệ.',
-    			'summary.required' => 'Tóm tắt bài viết không được để trống.',
-    			'content.required' => 'Nội dung bài viết không được để trống.',
-    			'image.image' => 'Hình bài viết không chính xác.',
-    			'status.required' => 'Trạng thái bài viết không được để trống',
-    		]);
+            [
+                'name' => 'required|max:255|min:6',
+                'summary' => 'required',
+                'content' => 'required',
+                'name_en' => 'required|max:255|min:6',
+                'summary_en' => 'required',
+                'content_en' => 'required',
+                'image' => 'image',
+                'status' => 'required'
+            ],
+            [
+                'name.required' => 'Tên bài viết không được để trống.',
+                'name.max' => 'Tên bài viết có độ dài từ 6 đến 255 ký tự.',
+                'name.min' => 'Tên bài viết có độ dài từ 6 đến 255 ký tự.',
+                'name_en.required' => 'Tên bài viết tiếng anh không được để trống.',
+                'name_en.max' => 'Tên bài viết tiếng anh có độ dài từ 6 đến 255 ký tự.',
+                'name_en.min' => 'Tên bài viết tiếng anh có độ dài từ 6 đến 255 ký tự.',
+                'summary.required' => 'Tóm tắt bài viết không được để trống.',
+                'summary_en.required' => 'Tóm tắt bài viết tiếng anh không được để trống.',
+                'content.required' => 'Nội dung bài viết không được để trống.',
+                'content_en.required' => 'Nội dung bài viết tiếng anh không được để trống.',
+                'image.image' => 'Hình bài viết không chính xác.',
+                'status.required' => 'Trạng thái bài viết không được để trống',
+            ]);
     	$news = DB::table('news')->where('id', $id)->select('image')->first();
     	$data = [
-    		'name' => $request->name,
-    		'slug' =>str_slug(trim($request->name)),
-    		'summary' => $request->summary,
-    		'content' => $request->content,
-    		'view' => 0,
-    		'status' => $request->status,
-    		'created_at' => date('Y-m-d H:m:s'),
-    	];
+            'name' => $request->name,
+            'name_en' => $request->name_en,
+            'slug' =>str_slug(trim($request->name)),
+            'summary' => $request->summary,
+            'summary_en' => $request->summary_en,
+            'content' => $request->content,
+            'content_en' => $request->content_en,
+            'view' => 0,
+            'status' => $request->status,
+            'created_at' => date('Y-m-d H:m:s'),
+        ];
     	if($request->hasFile('image'))
         {
             $file = $request->file('image');

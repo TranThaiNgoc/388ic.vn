@@ -1,5 +1,7 @@
 <?php
 return[
+	'title' => '388 INVESTMENT & CONSTRUCTION <br>
+	JOINT STOCK COMPANY',
 	'home_menu' => 'home',
 	'about_menu' => 'About',
 	'news_menu' => 'News',
@@ -38,4 +40,14 @@ return[
 	'development_strategy' => 'Development strategy',
 	'business_areas' => 'Business areas',
 	'active_image' => 'Active image',
+	'diagram' => 'Diagram',
+	'organizational_chart' => 'Organizational chart',
+	'construction_diagram' => 'Construction diagram',
+	'new_project' => 'NEW PROJECT',
+	'all_project' => 'All PROJECT',
+	'according_to_the_progress' => 'According to the progress',
+	'already_constructed' => 'Already constructed',
+	'under_construction' => 'Under construction',
+	'similar_jobs' => 'Similar jobs',
+	'company_overview' => 'Company Overview',
 ];

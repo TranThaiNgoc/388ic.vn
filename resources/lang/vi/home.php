@@ -1,5 +1,6 @@
 <?php
 return[
+	'title' => 'CÔNG TY CỔ PHẦN <br>ĐẦU TƯ VÀ XÂY LẮP 388',
 	'home_menu' => 'Trang Chủ',
 	'about_menu' => 'Giới Thiệu',
 	'news_menu' => 'Tin Tức',
@@ -36,5 +37,14 @@ return[
 	'development_strategy' => 'Chiến lược phát triển',
 	'business_areas' => 'Lĩnh vực kinh doanh',
 	'active_image' => 'Hình ảnh hoạt động',
-
+	'diagram' => 'Sơ đồ',
+	'organizational_chart' => 'Sơ đồ tổ chức',
+	'construction_diagram' => 'Sơ đồ thi công',
+	'new_project' => 'DỰ ÁN MỚI NHẤT',
+	'all_project' => 'Tất cả dự án',
+	'according_to_the_progress' => 'Theo tiến độ',
+	'already_constructed' => 'Đã thi công',
+	'under_construction' => 'Đang thi công',
+	'similar_jobs' => 'Việc làm tương tự',
+	'company_overview' => 'Tổng quan công ty',
 ];

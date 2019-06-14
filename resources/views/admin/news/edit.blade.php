@@ -31,6 +31,7 @@
             <div class="col-lg-10" style="padding-bottom:120px">
                 <form action="" method="POST" enctype="multipart/form-data">
                 	@csrf
+                    <h1>Bài viết tiếng Việt</h1>
                     <div class="form-group">
                     	<label>Tên bài viết</label>
                     	<input type="text" name="name" value="{{ $news->name }}" class="form-control" placeholder="Nhập tên bài viết">
@@ -42,6 +43,22 @@
                     <div class="form-group">
                     	<label>Nội dung bài viết</label>
                     	<textarea class="form-control editor" name="content" id="editor1" placeholder="Nhập nội dung bài viết" rows="10">{{ $news->content }}</textarea>
+                    </div>
+                    <h1>Bài viết tiếng Anh</h1>
+                    <div class="form-group">
+                        <label>Article name</label>
+                        <input type="text" name="name_en" value="{{ $news->name_en }}" class="form-control" placeholder="Article name">
+                        <span class="text-danger">{{ $errors->first('name_en') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Summary of the article</label>
+                        <textarea class="form-control editor" name="summary_en" id="editor2" placeholder="Summary of the article" rows="4">{{ $news->summary_en }}</textarea>
+                        <span class="text-danger">{{ $errors->first('summary_en') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Content</label>
+                        <textarea class="form-control editor" name="content_en" id="editor3" placeholder="Content" rows="10">{{ $news->content_en }}</textarea>
+                        <span class="text-danger">{{ $errors->first('content_en') }}</span>
                     </div>
                     <div class="form-group">
                     	<label style="width: 100%">hình ảnh bài viết</label>

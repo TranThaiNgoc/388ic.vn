@@ -42,4 +42,25 @@ return [
         'dathicong' => 'Đã thi công.',
         'dangthicong' => 'Đang thi công.',
     ],
+    'sex' => [
+        'male' => 'male',
+        'female' => 'Female',
+    ],
+    'experience' => [
+        'no_experience' => 'No experience',
+        'less_than_1_year' => 'Less than 1 year',
+        '1_year' => '1 year',
+        '2_year' => '2 year',
+        '3_year' => '3 year',
+        '4_year' => '4 year',
+        '5_year' => '> 5 year',
+    ],
+    'degree' => [
+        'unskilled_labor' => 'Unskilled labor',
+        'high_school' => 'High school',
+        'intermediate' => 'Intermediate',
+        'colleges' => 'Colleges',
+        'university' => 'University',
+        'graduate' => 'Graduate',
+    ],
 ];

@@ -23,9 +23,15 @@
             <div class="col-lg-9" style="padding-bottom:120px">
                 <form action="" method="POST" enctype="multipart/form-data">
                 	@csrf
+                    <h2>Giới thiệu chung tiếng Việt</h2>
                     <div class="form-group">
                         <textarea class="form-control" id="editor" name="content" placeholder="Nhập nội dung giới thiệu chung" rows="10">{{ isset($about_company->content) ? $about_company->content : '' }}</textarea>
                         <span class="text-danger">{{ $errors->first('content') }}</span>
+                    </div>
+                    <h2>Giới thiệu chung tiếng Anh</h2>
+                    <div class="form-group">
+                        <textarea class="form-control" id="editor1" name="content_en" placeholder="Nhập nội dung giới thiệu chung" rows="10">{{ isset($about_company->content_en) ? $about_company->content_en : '' }}</textarea>
+                        <span class="text-danger">{{ $errors->first('content_en') }}</span>
                     </div>
                     <div class="form-group">
                     	<label>Hỉnh ảnh</label>

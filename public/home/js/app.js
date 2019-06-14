@@ -120,7 +120,6 @@ $(document).ready(function () {
       1025: {
         slidesPerView: 3,
         spaceBetween: 20,
-        simulateTouch: true,
         autoplay: {
           delay: 5000
         }
@@ -128,17 +127,19 @@ $(document).ready(function () {
       769: {
         slidesPerView: 3,
         spaceBetween: 20,
-        simulateTouch: true,
         autoplay: {
           delay: 5000
         }
       },
       440: {
-        slidesPerView: 1,
+        slidesPerView: 2,
         spaceBetween: 20,
-        simulateTouch: true,
         autoplay: {
           delay: 5000
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
         }
       }
     }

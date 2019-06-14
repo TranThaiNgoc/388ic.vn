@@ -31,6 +31,7 @@
             <div class="col-lg-9" style="padding-bottom:120px">
                 <form action="" method="POST" enctype="multipart/form-data">
                 	@csrf
+                    <h1>Dự án tiếng Việt</h1>
                     <div class="form-group">
                         <label>Tên Dự án</label>
                         <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Nhập tên Dự án">
@@ -38,15 +39,26 @@
                     </div>
                     <div class="form-group">
                         <label>Nội dung dự án</label>
-                        <textarea class="form-control editor" name="content" id="editor" cols="4"></textarea>
+                        <textarea class="form-control editor" name="content" id="editor" cols="4">{{ old('content') }}</textarea>
                         <span class="text-danger">{{ $errors->first('name') }}</span>
+                    </div>
+                    <h1>Dự án tiếng Anh</h1>
+                    <div class="form-group">
+                        <label>Name project</label>
+                        <input type="text" class="form-control" name="name_en" value="{{ old('name_en') }}" placeholder="Nhập tên Dự án">
+                        <span class="text-danger">{{ $errors->first('name_en') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Content</label>
+                        <textarea class="form-control editor" name="content_en" id="editor1" cols="4">{{ old('content_en') }}</textarea>
+                        <span class="text-danger">{{ $errors->first('content_en') }}</span>
                     </div>
                     <div class="form-group">
                         <label>Hình ảnh</label>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <label>Hình 1</label>
+                                    <label>Hình 1(Hình đại diện)</label>
                                     <input type="file" name="image1">
                                     <span class="text-danger">{{ $errors->first('image1') }}</span>
                                 </div>

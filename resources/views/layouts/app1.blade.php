@@ -8,7 +8,7 @@
     <meta name="description" content="Công ty Cổ phần Đầu tư và Xây lắp 388 - 388IC">
     <meta name="author" content="">
 
-    <title>388ic.vn</title>
+    <title>Công ty cổ phần đầu tư và xây lắp 388</title>
     <base href="{{asset('')}}">
     <link rel="stylesheet" href="{{asset('home/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('home/css/font-awesome.css')}}">
@@ -53,7 +53,7 @@
                             <img src="{{ $configuration->logo_website }}" alt="388ic.com">
                         </a>
                         <div class="logo-name d-none d-md-block ml-2">
-                            388 INVESTMENT & CONSTRUCTION<br>JOINT STOCK COMPANY</span>
+                            @lang('home.title')</span>
                         </div>
                     </div>
                 </div>

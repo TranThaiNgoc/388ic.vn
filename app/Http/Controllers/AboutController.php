@@ -20,14 +20,17 @@ class AboutController extends Controller
     	$this->validate($request,
     		[
     			'content' => 'required',
+                'content_en' => 'required',
     			'image' => 'image',
     		],
     		[
     			'content.required' => 'Nội dung không được để trống.',
+                'content_en.required' => 'Nội dung không được để trống.',
     			'image.image' => 'Hình ảnh không hợp lệ.',
     		]);
     	$data = [
     		'content' => $request->content,
+            'content_en' => $request->content_en,
     		'created_at' => date('Y-m-d H:i:s'),
     	];
     	if($request->hasFile('image'))
@@ -55,10 +58,15 @@ class AboutController extends Controller
     		[
     			'image_organization' => 'image',
     			'image_site_organization' => 'image',
+                'image_organization_en' => 'image',
+                'image_site_organization_en' => 'image',
+
     		],
     		[
     			'image_organization.image' => 'Hình sơ đồ tổ chức không hợp lệ.',
     			'image_site_organization.image' => 'Hình sơ đồ tổ chức trang web không hợp lệ.',
+                'image_organization_en.image' => 'Hình sơ đồ tổ chức không hợp lệ.',
+                'image_site_organization_en.image' => 'Hình sơ đồ tổ chức trang web không hợp lệ.',
     		]);
     	if($request->hasFile('image_organization')) {
     		$file = $request->file('image_organization');
@@ -76,6 +84,20 @@ class AboutController extends Controller
             );
             $image = env('APP_URL').Storage::url($path);
             $data['image_site_organization'] = $image;
+        }
+        if($request->hasFile('image_organization_en')) {
+            $file = $request->file('image_organization_en');
+            $new_name_image = rand(1,999999) . '-' .$file->getClientOriginalName();
+            $path = Storage::putFileAs('public/uploads', $file, $new_name_image);
+            $image = env('APP_URL').Storage::url($path);
+            $data['image_organization_en'] = $image;
+        }
+        if($request->hasFile('image_site_organization_en')) {
+            $file = $request->file('image_site_organization_en');
+            $new_name_image = rand(1,999999) . '-' .$file->getClientOriginalName();
+            $path = Storage::putFileAs('public/uploads', $file, $new_name_image);
+            $image = env('APP_URL').Storage::url($path);
+            $data['image_site_organization_en'] = $image;
         }
         DB::table('about_company')->where('id', 1)->update($data);
 
@@ -191,15 +213,19 @@ class AboutController extends Controller
     public function postPar(Request $request) {
     	$this->validate($request,
     		[
-    			'content' => 'required'
+    			'content' => 'required',
+                'content_en' => 'required',
     		],
     		[
     			'content.required' => 'Nội dung không được để trống.',
+                'content_en.required' => 'Nội dung không được để trống.',
     		]);
     	$data = [
     		'name' => $request->name,
+            'name_en' => $request->name_en,
     		'slug' => str_slug(trim($request->name)),
     		'content' => $request->content,
+            'content_en' => $request->content_en,
     		'created_at' => date('Y-m-d H:i:s'),
     	];
     	DB::table('about_content')->where('id', 1)->update($data);	
@@ -214,14 +240,19 @@ class AboutController extends Controller
     public function postDevelope(Request $request) {
     	$this->validate($request,
     		[
-    			'content' => 'required'
+    			'content' => 'required',
+                'content_en' => 'required',
     		],
     		[
     			'content.required' => 'Nội dung không được để trống.',
+                'content_en.required' => 'Nội dung không được để trống.',
     		]);
     	$data = [
+            'name' => $request->name,
+            'name_en' => $request->name_en,
     		'slug' => str_slug(trim($request->name)),
     		'content' => $request->content,
+            'content_en' => $request->content_en,
     		'created_at' => date('Y-m-d H:i:s'),
     	];
     	DB::table('about_content')->where('id', 2)->update($data);	
@@ -242,8 +273,11 @@ class AboutController extends Controller
     			'content.required' => 'Nội dung không được để trống.',
     		]);
     	$data = [
+            'name' => $request->name,
+            'name_en' => $request->name_en,
     		'slug' => str_slug(trim($request->name)),
     		'content' => $request->content,
+            'content_en' => $request->content_en,
     		'created_at' => date('Y-m-d H:i:s'),
     	];
     	DB::table('about_content')->where('id', 3)->update($data);	

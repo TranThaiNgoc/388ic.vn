@@ -22,7 +22,9 @@ class ProjectController extends Controller
     	$this->validate($request,
     		[
     			'name' => 'required|min:4|max:1024',
+                'name_en' => 'required|min:4|max:1024',
     			'content' => 'required',
+                'content_en' => 'required',
     			'image1' => 'required|image',
                 'status' => 'required',
     			'image2' => 'image',
@@ -33,7 +35,11 @@ class ProjectController extends Controller
     			'name.required' => 'Tên dự án không được để trống.',
     			'name.min' => 'Tên dự án có độ dài từ 6 đến 1024 ký tự.',
     			'name.max' => 'Tên dự án có độ dài từ 6 đến 1024 ký tự.',
+                'name_en.required' => 'Tên dự án không được để trống.',
+                'name_en.min' => 'Tên dự án có độ dài từ 6 đến 1024 ký tự.',
+                'name_en.max' => 'Tên dự án có độ dài từ 6 đến 1024 ký tự.',
     			'content.required' => 'Nội dung dự án không được để trống.',
+                'content_en.required' => 'Nội dung dự án không được để trống.',
     			'image1.required' => 'Hình ảnh dự án không được để trống',
     			'image1.image' => 'Hình ảnh dự án không hợp lệ.',
     			'image2.image' => 'Hình ảnh dự án không hợp lệ.',
@@ -43,8 +49,10 @@ class ProjectController extends Controller
     		]);
     	$data = [
     		'name' => $request->name,
+            'name_en' => $request->name_en,
             'slug' => str_slug(trim($request->name)),
     		'content' => $request->content,
+            'content_en' => $request->content_en,
             'status' => $request->status,
     		'created_at' => date('Y-m-d H:m:s'),
     	];
@@ -109,8 +117,10 @@ class ProjectController extends Controller
     	}
     	$this->validate($request,
     		[
-    			'name' => 'required|name|min:4|max:1024',
-    			'content' => 'required',
+    			'name' => 'required|min:4|max:1024',
+                'name_en' => 'required|min:4|max:1024',
+                'content' => 'required',
+    			'content_en' => 'required',
     			'image1' => 'image',
     			'image2' => 'image',
     			'image3' => 'image',
@@ -119,10 +129,13 @@ class ProjectController extends Controller
     		],
     		[
     			'name.required' => 'Tên dự án không được để trống.',
-    			'name.name' => 'Tên dự án không hợp lệ.',
     			'name.min' => 'Tên dự án có độ dài từ 6 đến 1024 ký tự.',
     			'name.max' => 'Tên dự án có độ dài từ 6 đến 1024 ký tự.',
+                'name_en.required' => 'Tên dự án không được để trống.',
+                'name_en.min' => 'Tên dự án có độ dài từ 6 đến 1024 ký tự.',
+                'name_en.max' => 'Tên dự án có độ dài từ 6 đến 1024 ký tự.',
     			'content.required' => 'Nội dung dự án không được để trống.',
+                'content_en.required' => 'Nội dung dự án không được để trống.',
     			'image1.image' => 'Hình ảnh dự án không hợp lệ.',
     			'image2.image' => 'Hình ảnh dự án không hợp lệ.',
     			'image3.image' => 'Hình ảnh dự án không hợp lệ.',
@@ -130,12 +143,14 @@ class ProjectController extends Controller
                 'status.required' => 'Tình trạng dự án không được để trống.',
     		]);
     	$data = [
-    		'name' => $request->name,
+            'name' => $request->name,
+            'name_en' => $request->name_en,
             'slug' => str_slug(trim($request->name)),
-    		'content' => $request->content,
+            'content' => $request->content,
+            'content_en' => $request->content_en,
             'status' => $request->status,
-    		'created_at' => date('Y-m-d H:m:s'),
-    	];
+            'created_at' => date('Y-m-d H:m:s'),
+        ];
     	$project = DB::table('project')->where('id',$id)->select('image1', 'image2', 'image3', 'image4')->first();
     	if($request->hasFile('image1'))
         {
