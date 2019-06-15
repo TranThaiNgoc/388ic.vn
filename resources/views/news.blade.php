@@ -1,5 +1,7 @@
+@php
+    use App\Http\Controllers\Common\Common;
+@endphp
 @extends('layouts.app1')
-@section('title', 'Tin tức')
 @section('content')
 <section>
     <div class="container">

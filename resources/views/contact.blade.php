@@ -1,5 +1,4 @@
 @extends('layouts.app1')
-@section('title', 'Liên hệ')
 @section('content')
 <section class="contact">
     <div class="container animated fadeIn">

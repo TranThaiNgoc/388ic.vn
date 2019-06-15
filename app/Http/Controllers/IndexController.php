@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 use Session;
+use App\Http\Controllers\Common\Common;
 
 class IndexController extends Controller
 {
@@ -63,48 +64,58 @@ class IndexController extends Controller
     }
 
     public function getContact() {
-    	return view('contact', compact('configuration'));
+        $meta_title = '- Liên hệ';
+    	return view('contact', compact('configuration', 'meta_title'));
     }
 
     public function getListNews() {
         $news = DB::table('news')->where('status', 0)->orderBy('id', 'desc')->paginate(6);
         $project = DB::table('project')->orderBy('id', 'desc')->limit(3)->get();
-    	return view('list_news', compact('configuration', 'news', 'project'));
+        $meta_title = '- Danh sách tin tức';
+    	return view('list_news', compact('configuration', 'news', 'project', 'meta_title'));
     }
 
     public function getNewsPost($slug) {
         $news = DB::table('news')->where('slug', $slug)->first();
         $project = DB::table('project')->orderBy('id', 'desc')->limit(3)->get();
-        return view('news', compact('configuration', 'news', 'project'));
+        $meta_title = '- '.$news->name;
+        $meta_description = Common::_substr(strip_tags($news->content),100);
+        return view('news', compact('configuration', 'news', 'project', 'meta_title', 'meta_description'));
     }
 
     public function getListProject() {
         $project = DB::table('project')->orderBy('id', 'desc')->paginate(6);
-        return view('list_project', compact('configuration', 'project'));
+        $meta_title = '- Danh sách dự án';
+        return view('list_project', compact('configuration', 'project', 'meta_title'));
     }
 
     public function getProject($slug) {
         $project = DB::table('project')->where('slug', $slug)->first();
         $project_lq = DB::table('project')->where('slug','!=', $slug)->orderBy('id', 'desc')->limit(3)->get();
-        return view('project', compact('configuration', 'project', 'project_lq'));
+        $meta_title = '- '.$project->name;
+        $meta_description = Common::_substr(strip_tags($project->content),100);
+        return view('project', compact('configuration', 'project', 'project_lq', 'meta_title', 'meta_description'));
     }
 
     public function getListJob() {
         $job = DB::table('job')->orderBy('id', 'desc')->paginate(6);
-        $project = DB::table('project')->orderBy('id', 'desc')->limit(3)->get(); 
-        return view('list_job', compact('configuration', 'job', 'project'));
+        $project = DB::table('project')->orderBy('id', 'desc')->limit(3)->get();
+        $meta_title = '- Danh sách tuyển dụng'; 
+        return view('list_job', compact('configuration', 'job', 'project', 'meta_title'));
     }
 
     public function getJob($slug) {
         $job = DB::table('job')->where('slug', $slug)->first();
         $job_lq = DB::table('job')->where('slug', '!=', $slug)->orderBy('id','desc')->limit(4)->get();
         $career = DB::table('career')->get();
-        return view('job', compact('configuration', 'job', 'career', 'job_lq'));
+        $meta_title = '- '.$job->title;
+        return view('job', compact('configuration', 'job', 'career', 'job_lq', 'meta_title'));
     }
 
     public function getSearch_project($slug) {
         $project = DB::table('project')->where('status', $slug)->paginate(6);
-        return view('list_project', compact('configuration', 'project'));
+        $meta_title = '- Danh sách tìm kiếm';
+        return view('list_project', compact('configuration', 'project', 'meta_title'));
     }
 
     public function search_project(Request $request) {
@@ -117,54 +128,63 @@ class IndexController extends Controller
             ]);
         $search = $request->name;
         $project = DB::table('project')->where('name', 'LIKE', '%'.$search.'%')->paginate(6);
-        return view('list_project', compact('configuration', 'project'));
+        $meta_title = '- Danh sách tìm kiếm';
+        return view('list_project', compact('configuration', 'project', 'meta_title'));
     }
 
     public function getAbout_company() {
         $about_company = DB::table('about_company')->where('id', 1)->first();
         $project = DB::table('project')->orderBy('id', 'desc')->limit(3)->get();
-        return view('about_company', compact('about_company', 'project'));
+        $meta_title = '- Giới thiệu chung';
+        return view('about_company', compact('about_company', 'project', 'meta_title'));
     }
 
     public function getAbout_organization() {
         $about_organization = DB::table('about_company')->where('id', 1)->first();
         $project = DB::table('project')->orderBy('id', 'desc')->limit(3)->get();
-        return view('about_organization', compact('about_organization', 'project'));
+        $meta_title = '- Sơ đồ tổ chức';
+        return view('about_organization', compact('about_organization', 'project', 'meta_title'));
     }
 
     public function getManger() {
         $manager = DB::table('manager')->orderBy('ordernum', 'asc')->get();
         $project = DB::table('project')->orderBy('id', 'desc')->limit(3)->get();
-        return view('about_manager', compact('manager', 'project'));
+        $meta_title = '- Ban giám đốc';
+        return view('about_manager', compact('manager', 'project', 'meta_title'));
     }
 
     public function getPar() {
         $par = DB::table('about_content')->where('id', 1)->first();
         $project = DB::table('project')->orderBy('id', 'desc')->limit(3)->get();
-        return view('about_par', compact('project', 'par'));
+        $meta_title = '- Tầm nhìn sứ mệnh';
+        return view('about_par', compact('project', 'par', 'meta_title'));
     }
 
     public function getDevelope() {
         $develope = DB::table('about_content')->where('id', 2)->first();
         $project = DB::table('project')->orderBy('id', 'desc')->limit(3)->get();
-        return view('about_develope', compact('project', 'develope'));
+        $meta_title = '- Chiến lược phát triển';
+        return view('about_develope', compact('project', 'develope', 'meta_title'));
     }
 
     public function getBusiness() {
         $business = DB::table('about_content')->where('id', 3)->first();
         $project = DB::table('project')->orderBy('id', 'desc')->limit(3)->get();
-        return view('about_business', compact('project', 'business'));
+        $meta_title = '- Lĩnh vực kinh doanh';
+        return view('about_business', compact('project', 'business', 'meta_title'));
     }
 
     public function getImage_about() {
         $image = DB::table('about_image')->get();
         $project = DB::table('project')->orderBy('id', 'desc')->limit(3)->get();
-        return view('about_image', compact('project', 'image'));
+        $meta_title = '- Hình ảnh chung';
+        return view('about_image', compact('project', 'image', 'meta_title'));
     }
 
     public function getCertificate($id) {
         $certificate = DB::table('certificate')->where('slug', $id)->first();
         $project = DB::table('project')->orderBy('id', 'desc')->limit(3)->get();
-        return view('certificate', compact('certificate', 'project'));
+        $meta_title = '- Chứng chỉ';
+        return view('certificate', compact('certificate', 'project', 'meta_title'));
     }
 }

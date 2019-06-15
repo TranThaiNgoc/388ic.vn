@@ -2,13 +2,23 @@
 <html lang="en">
 
 <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
+    <meta name="DC.Language" content="vi" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Công ty Cổ phần Đầu tư và Xây lắp 388 - 388IC">
     <meta name="author" content="">
-
-    <title>Công ty cổ phần đầu tư và xây lắp 388</title>
+    <title>Công ty cổ phần đầu tư và xây lắp 388 {{ isset($meta_title) ? $meta_title : '' }}</title>
+    <meta name="description" content="{{ isset($meta_description) ? $meta_description :'' }}" />
+    <meta name="DC.Language" content="vi" >
+    <link rel="alternate" href="{{ url('/') }}" hreflang="{{ str_replace('_', '-', app()->getLocale()) }}" />
+    <meta name="copyright" content="Công ty cổ phần đầu tư và xây lắp 388" />
+    <meta name="robots" content="index,follow" />
+    <meta name="geo.placename" content="Ha Noi, Viet Nam" />
+    <meta name="geo.region" content="VN-HN" />
+    <meta name="geo.position" content="21.030624;105.782431" />
+    <meta name="ICBM" content="21.030624, 105.782431" />
+    <meta name="revisit-after" content="days" />
     <base href="{{asset('')}}">
     <link rel="stylesheet" href="{{asset('home/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('home/css/font-awesome.css')}}">
@@ -18,8 +28,7 @@
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous"
     src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.3&appId=2046573405635669&autoLogAppEvents=1">
-</script>
-<title>@yield('title')</title>
+    </script>
 </head>
 <style>
     .card-body {

@@ -2,7 +2,6 @@
 use App\Http\Controllers\Common\Common;
 @endphp
 @extends('layouts.app1')
-@section('title', 'Công ty Cổ phần Đầu tư và Xây lắp 388 - 388IC')
 @section('content')
 <section class="slide-main">
     <div class="container">

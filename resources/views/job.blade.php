@@ -1,5 +1,4 @@
 @extends('layouts.app1')
-@section('title', 'Tuyển dụng')
 @section('content')
 <section>
     <div class="container">
@@ -9,7 +8,7 @@
                     <div class="be-text-large d-md-inline-block d-block">
                         <ul class="nolist be-breadcrumb text-uppercase d-inline-block">
                             <li><a href="{{ url('/') }}">@lang('home.home_menu')</a></li>
-                            <li><a href="{{ route('list_job') }}">@lang('home.home_job')</a></li>
+                            <li><a href="{{ route('list_job') }}">@lang('home.job_menu')</a></li>
                             @if(Session::get('locale')=='vi')
                             <li><span>{{ $job->title }}</span></li>
                             @elseif(Session::get('locale') == 'en')
@@ -264,13 +263,13 @@
                         <div class="col-lg-12">
                             @if(Session::get('locale') == 'vi')
                             <ul class="nolist list-job-another">
-                                @foreach($job_lq as $key => $value)
+                                @foreach(@$job_lq as $key => $value)
                                 <li><a href="{{ route('job',['slug'=>$value->slug]) }}">{{ $value->title }}</a></li>
                                 @endforeach
                             </ul>
                             @elseif(Session::get('locale') == 'en')
                             <ul class="nolist list-job-another">
-                                @foreach($job_lq as $key => $value)
+                                @foreach(@$job_lq as $key => $value)
                                 <li><a href="{{ route('job',['slug'=>$value->slug]) }}">{{ $value->title_en }}</a></li>
                                 @endforeach
                             </ul>

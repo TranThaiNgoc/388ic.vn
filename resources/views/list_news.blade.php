@@ -2,7 +2,6 @@
     use App\Http\Controllers\Common\Common;
 @endphp
 @extends('layouts.app1')
-@section('title', 'Danh sách bài viết')
 @section('content')
 <section>
     <div class="container">
