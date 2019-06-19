@@ -38,7 +38,11 @@
                                                 {{ $value->name }}
                                             </div>
                                             <div class="roll">
+                                                @if(Session::get('locale')=='vi')
                                                 {{ $value->location }}
+                                                @elseif(Session::get('locale') == 'en')
+                                                {{ $value->location_en }}
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -61,7 +65,11 @@
                                                 {{ $value->name }}
                                             </div>
                                             <div class="roll">
+                                                @if(Session::get('locale') == 'vi')
                                                 {{ $value->location }}
+                                                @elseif(Session::get('locale') == 'en')
+                                                {{ $value->location_en }}
+                                                @endif
                                             </div>
                                         </div>
                                     </div>

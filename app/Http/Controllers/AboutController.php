@@ -120,6 +120,7 @@ class AboutController extends Controller
     			'image' => 'required|image',
     			'location' => 'required',
     			'ordernum' => 'required|integer',
+                'location_en' => 'required',
     		],
     		[	
     			'name.required' => 'Tên thành viên không được để trống.',
@@ -129,11 +130,13 @@ class AboutController extends Controller
     			'location.required' => 'Vị trí thành viên không được để trống.',
     			'ordernum.required' => 'Thứ tự thành viên không được để trống.',
     			'ordernum.integer' => 'Thứ tự thành viên không hợp lệ.',
+                'location_en.required' => 'Thứ tự thành viên tiếng anh không được để trống.',
     		]);
     	$data = [
     		'name' => $request->name,
     		'location' => $request->location,
     		'ordernum' => $request->ordernum,
+            'location_en' => $request->location_en,
     		'created_at' => date('Y-m-d H:i:s'),
     	];
     	if($request->hasFile('image')) {
@@ -163,19 +166,22 @@ class AboutController extends Controller
     			'name' => 'required|name',
     			'image' => 'image',
     			'location' => 'required',
+                'location_en' => 'required',
     			'ordernum' => 'required|integer',
     		],
     		[	
     			'name.required' => 'Tên thành viên không được để trống.',
-    			'name.name' => 'Tên thành viên không hợp lệ.',
+                'name_en.name' => 'Tên thành viên tiếng anh không hợp lệ.',
     			'image.image' => 'Hình ảnh không hợp lệ',
     			'location.required' => 'Vị trí thành viên không được để trống.',
+                'location_en.required' => 'Vị trí thành viên tiếng anh không được để trống.',
     			'ordernum.required' => 'Thứ tự thành viên không được để trống.',
     			'ordernum.integer' => 'Thứ tự thành viên không hợp lệ.',
     		]);
     	$data = [
     		'name' => $request->name,
     		'location' => $request->location,
+            'location_en' => $request->location_en,
     		'ordernum' => $request->ordernum,
     		'created_at' => date('Y-m-d H:i:s'),
     	];
@@ -286,22 +292,27 @@ class AboutController extends Controller
 
     public function getImage_about() {
     	$image_about = DB::table('about_image')->get();
-    	return view('admin.about.image_about', compact('image_about'));
+        $album = DB::table('album')->get();
+    	return view('admin.about.image_about', compact('image_about', 'album'));
     }
 
     public function getAdd_Image_about() {
-    	return view('admin.about.add_image_about');
+        $album = DB::table('album')->get();
+    	return view('admin.about.add_image_about', compact('album'));
     }
 
     public function postAdd_Image_about(Request $request) {
     	$this->validate($request,
     		[
-    			'image' => 'image'
+    			'image' => 'image',
+                'id_album' => 'required'
     		],
     		[
     			'image.image' => 'Hình ảnh không hợp lệ.',
+                'id_album.required' => 'Tên Album không được để trống.',
     		]);
     	$data = [
+            'id_album' => $request->id_album,
     		'created_at' => date('Y-m-d H:i:s')
     	];
     	if($request->hasFile('image')) {
@@ -411,6 +422,104 @@ class AboutController extends Controller
         $feedback->delete();
 
         return redirect()->back()->with('thongbao', 'Xóa phản hồi thành công.');
+    }
+
+    public function getAdd_album() {
+        return view('admin.about.add_album');
+    }
+
+    public function postAdd_album(Request $request) {
+        $this->validate($request, 
+            [
+                'name' => 'required|min:3|max:255',
+                'name' => 'required|min:3|max:255'
+            ],
+            [
+                'name.required' => 'Tên album không được để trống.',
+                'name.min' => 'Tên album có độ dài từ 3 đến 255 ký tự.',
+                'name.max' => 'Tên album có độ dài từ 3 đến 255 ký tự.',
+                'name_en.required' => 'Tên album tiếng Anh không được để trống.',
+                'name_en.min' => 'Tên album tiếng Anh có độ dài từ 3 đến 255 ký tự.',
+                'name_en.max' => 'Tên album tiếng Anh có độ dài từ 3 đến 255 ký tự.',
+            ]);
+        $data = [
+            'name' => $request->name,
+            'name_en' => $request->name_en,
+            'created_at' => date('Y-m-d H:i:s'),
+        ];
+        DB::table('album')->insert($data);
+
+        return redirect()->back()->with('thongbao', 'Thêm tên album thành công.');
+    }
+
+    public function getList_album() {
+        $album = DB::table('album')->get();
+        return view('admin.about.list_album', compact('album'));
+    }
+
+    public function getEdit_album($id) {
+        $album = DB::table('album')->where('id', $id)->first();
+        if(is_null($album)) {
+            abort('404');
+        }
+        return view('admin.about.edit_album', compact('album'));
+    }
+
+    public function postEdit_album(Request $request, $id) {
+        $album = DB::table('album')->where('id', $id);
+        if(is_null($album->first())) {
+            abort('404');
+        }
+        $this->validate($request, 
+            [
+                'name' => 'required',
+                'name_en' => 'required',
+            ], 
+            [
+                'name.required' => 'Tên Album không được để trống.',
+                'name_en.required' => 'Tên Album không được để trống.',
+            ]);
+        $data = [
+            'name' => $request->name,
+            'name_en' => $request->name_en,
+            'created_at' => date('Y-m-d H:i:s'),
+        ];
+        $album->update($data);
+
+        return redirect()->back()->with('thongbao', 'Thêm tên Album thành công.');
+    }
+
+    public function getDelete_album($id) {
+        $album = DB::table('album')->where('id', $id);
+        if(is_null($album->first())) {
+            abort('404');
+        }
+        $album->delete();
+
+        return redirect()->back()->with('thongbao', 'Xóa tên Album thành công.');
+    }
+
+    public function getCompany_profile() {
+        $company_profile = DB::table('company_profile')->where('id', 1)->first();
+        if(is_null($company_profile)) {
+            abort('404');
+        }
+        return view('admin.about.company_profile', compact('company_profile'));
+    }
+
+    public function postCompany_profile(Request $request) {
+        $company_profile = DB::table('company_profile')->where('id', 1);
+        if(is_null($company_profile->first())) {
+            abort('404');
+        }
+        $data = [
+            'link' => $request->link,
+            'link_en' => $request->link_en,
+            'created_at' => date('Y-m-d H:i:s'),
+        ];
+        $company_profile->update($data);
+
+        return redirect()->back()->with('thongbao', 'Cập nhật thành công.');
     }
 
 }

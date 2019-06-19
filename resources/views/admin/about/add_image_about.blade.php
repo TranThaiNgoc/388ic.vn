@@ -21,9 +21,17 @@
                 </div>
             @endif
             <!-- /.col-lg-12 -->
-            <div class="col-lg-9" style="padding-bottom:120px">
+            <div class="col-lg-3" style="padding-bottom:120px">
                 <form action="" method="POST" enctype="multipart/form-data">
                     @csrf
+                    <div class="form-group">
+                        <label>Tên Album</label>
+                        <select class="form-control" name="id_album">
+                            @foreach($album as $value)
+                            <option value="{{ $value->id }}">{{ $value->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label>Hình ảnh hoạt động</label>
                         <input type="file" name="image">

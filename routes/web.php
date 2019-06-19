@@ -105,6 +105,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']],function(){
 		Route::get('sua-phan-hoi/{id}', 'AboutController@getEdit_Feedback')->name('admin.edit_feedback');
 		Route::post('sua-phan-hoi/{id}', 'AboutController@postEdit_Feedback');
 		Route::get('xoa-phan-hoi/{id}', 'AboutController@postDelete_Feedback')->name('admin.delete_feedback');
+		Route::get('them-album', 'AboutController@getAdd_album')->name('admin.add_album');
+		Route::post('them-album', 'AboutController@postAdd_album');
+		Route::get('danh-sach-album', 'AboutController@getList_album')->name('admin.list_album');
+		Route::get('sua-album/{id}', 'AboutController@getEdit_album')->name('admin.edit_album');
+		Route::post('sua-album/{id}', 'AboutController@postEdit_album');
+		Route::get('xoa-album/{id}', 'AboutController@getDelete_album')->name('admin.delete_album');
+		Route::get('ho-so-nang-luc', 'AboutController@getCompany_profile')->name('admin.company_profile');
+		Route::post('ho-so-nang-luc', 'AboutController@postCompany_profile');
 	});
 
 	Route::group(['prefix' => 'certificate', 'middleware' => ['role:supperadmin']],function(){

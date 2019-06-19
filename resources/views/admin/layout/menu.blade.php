@@ -85,6 +85,9 @@
                                 <li>
                                     <a href="{{ route('admin.image_about') }}">Hình ảnh hoạt động</a>
                                 </li>
+                                <li>
+                                    <a href="{{ route('admin.company_profile') }}">Hồ sơ năng lực</a>
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

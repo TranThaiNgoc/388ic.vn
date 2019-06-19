@@ -2,12 +2,12 @@
 return[
 	'title' => '388 INVESTMENT & CONSTRUCTION <br>
 	JOINT STOCK COMPANY',
-	'home_menu' => 'home',
-	'about_menu' => 'About',
-	'news_menu' => 'News',
-	'project_menu' => 'Project',
-	'job_menu' => 'Job',
-	'contact_menu' => 'Contact',
+	'home_menu' => 'HOME',
+	'about_menu' => 'ABOUT US',
+	'news_menu' => 'NEWS',
+	'project_menu' => 'PROJECT',
+	'job_menu' => 'Recruitment',
+	'contact_menu' => 'CONTACT',
 	'typical_projects' => 'typical projects',
 	'cooperate_with' => 'cooperate with',
 	'contact_link' => 'Click on the link to contact 388ic',
@@ -50,4 +50,5 @@ return[
 	'under_construction' => 'Under construction',
 	'similar_jobs' => 'Similar jobs',
 	'company_overview' => 'Company Overview',
+	'company_profile' => 'Company profile',
 ];

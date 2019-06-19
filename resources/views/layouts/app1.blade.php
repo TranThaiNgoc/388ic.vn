@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -13,6 +13,10 @@
     <meta name="DC.Language" content="vi" >
     <link rel="alternate" href="{{ url('/') }}" hreflang="{{ str_replace('_', '-', app()->getLocale()) }}" />
     <meta name="copyright" content="Công ty cổ phần đầu tư và xây lắp 388" />
+    <link rel="shortcut icon" href="{{ $configuration->logo_website }}" type="image/x-icon" />
+    <meta property="og:image:width" content="490px" />
+    <meta property="og:image:height" content="292px" />
+    <meta property="og:image" itemprop="thumbnailUrl" content="{{ isset($meta_image) ? $meta_image : $configuration->logo_website }}" />
     <meta name="robots" content="index,follow" />
     <meta name="geo.placename" content="Ha Noi, Viet Nam" />
     <meta name="geo.region" content="VN-HN" />
@@ -61,7 +65,7 @@
                         <a id="logo" href="{{ url('/') }}" class="d-block py-1">
                             <img src="{{ $configuration->logo_website }}" alt="388ic.com">
                         </a>
-                        <div class="logo-name d-none d-md-block ml-2">
+                        <div class="logo-name mr-5 d-md-block ml-2">
                             @lang('home.title')</span>
                         </div>
                     </div>
@@ -119,6 +123,13 @@
                                         <li><a href="{{ route('about_develope') }}">@lang('home.development_strategy')</a></li>
                                         <li><a href="{{ route('about_business') }}">@lang('home.business_areas')</a></li>
                                         <li><a href="{{ route('about_image') }}">@lang('home.active_image')</a></li>
+                                        @foreach(@$company_profile as $value)
+                                        @if(Session::get('locale') == 'vi')
+                                        <li><a target="_blank" href="{{ $value->link }}">@lang('home.company_profile')</a></li>
+                                        @elseif(Session::get('locale') == 'en')
+                                        <li><a target="_blank" href="{{ $value->link_en }}">@lang('home.company_profile')</a></li>
+                                        @endif
+                                        @endforeach
                                     </ul>
                                 </div>
                             </li>
@@ -233,7 +244,10 @@
                             <ul class="nolist">
                                 <li>
                                     <span><u>@lang('home.headquarters'):</u></span>
-                                    <span>20A PHẠM VĂN DINH - P.THẮNG NHẤT - TP.VŨNG TÀU</span>
+                                    @if(Session::get('locale') == 'vi')
+                                    <span>Số 20A đường Phạm Văn Dinh, Phường Thắng Nhất, Thành phố Vũng Tàu, Tỉnh Bà rịa - Vũng Tàu</span>@elseif(Session::get('locale') == 'en')
+                                    <span>No. 20A Pham Van Dinh Street, Ward Thang Nhat, Vung Tau City, Ba Ria - Vung Tau Province</span>
+                                    @endif
                                 </li>
                                 <li>
                                     <span><u>@lang('home.phone'):</u></span>
@@ -245,7 +259,7 @@
                                 </li>
                                 <li>
                                     <span><u>Email:</u></span>
-                                    <span>admin@388ic.com.vn</span>
+                                    <span>info@388ic.com.vn</span>
                                 </li>
                                 <li>
                                     <a href="http://mail.388ic.com.vn/Mondo/lang/sys/Login.aspx?Version=Desktop" target="_blank" class="text-white"><u>Webmail</u></a>

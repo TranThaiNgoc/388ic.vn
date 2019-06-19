@@ -14,9 +14,12 @@ class IndexController extends Controller
         $configuration = DB::table('configuration')->where('id', 1)->first();
         $certificates = DB::table('certificate')->get();
         $parnter = DB::table('image_partner')->get();
+        $company_profile = DB::table('company_profile')->get();
+        view()->share('company_profile',$company_profile);
         view()->share('configuration',$configuration);
         view()->share('parnter',$parnter);
         view()->share('certificates',$certificates);
+        (Session::get('locale') == '') ? Session::put('locale', 'vi') : '';
     }
 
     public function getIndex() {
@@ -80,7 +83,8 @@ class IndexController extends Controller
         $project = DB::table('project')->orderBy('id', 'desc')->limit(3)->get();
         $meta_title = '- '.$news->name;
         $meta_description = Common::_substr(strip_tags($news->content),100);
-        return view('news', compact('configuration', 'news', 'project', 'meta_title', 'meta_description'));
+        $meta_image = $news->image;
+        return view('news', compact('configuration', 'news', 'project', 'meta_title', 'meta_image', 'meta_description'));
     }
 
     public function getListProject() {
@@ -94,7 +98,8 @@ class IndexController extends Controller
         $project_lq = DB::table('project')->where('slug','!=', $slug)->orderBy('id', 'desc')->limit(3)->get();
         $meta_title = '- '.$project->name;
         $meta_description = Common::_substr(strip_tags($project->content),100);
-        return view('project', compact('configuration', 'project', 'project_lq', 'meta_title', 'meta_description'));
+        $meta_image = $project->image1;
+        return view('project', compact('configuration', 'project', 'project_lq', 'meta_title', 'meta_image', 'meta_description'));
     }
 
     public function getListJob() {
@@ -175,10 +180,18 @@ class IndexController extends Controller
     }
 
     public function getImage_about() {
-        $image = DB::table('about_image')->get();
+        $image = DB::table('album')
+        ->join('about_image', 'about_image.id_album', '=', 'album.id')
+        ->select('album.id as album_id', 'album.name as album_name','album.name_en as album_name_en', 'about_image.*')->get();
+        foreach($image as $key => $value) {
+            $list_image[$value->id_album]['name'] = $value->album_name;
+            $list_image[$value->id_album]['name_en'] = $value->album_name_en;
+            $list_image[$value->id_album]['post'][] = $value;
+        }
+
         $project = DB::table('project')->orderBy('id', 'desc')->limit(3)->get();
         $meta_title = '- Hình ảnh chung';
-        return view('about_image', compact('project', 'image', 'meta_title'));
+        return view('about_image', compact('project', 'image', 'meta_title', 'list_image'));
     }
 
     public function getCertificate($id) {

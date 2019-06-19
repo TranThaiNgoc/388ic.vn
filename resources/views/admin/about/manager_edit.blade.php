@@ -36,9 +36,14 @@
                         <span class="text-danger">{{ $errors->first('image') }}</span>
                     </div>
                     <div class="form-group">
-                        <label>Vị trí</label>
+                        <label>Vị trí tiếng Việt</label>
                         <input type="text" value="{{ $manager->location }}" name="location" class="form-control" placeholder="Nhập vị trí thành viên">
                         <span class="text-danger">{{ $errors->first('location') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Vị trí tiếng Anh</label>
+                        <input type="text" value="{{ $manager->location_en }}" name="location_en" class="form-control" placeholder="Nhập vị trí thành viên">
+                        <span class="text-danger">{{ $errors->first('location_en') }}</span>
                     </div>
                     <div class="form-group">
                         <label>Thứ tự</label>

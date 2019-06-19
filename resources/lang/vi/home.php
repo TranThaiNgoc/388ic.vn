@@ -1,14 +1,14 @@
 <?php
 return[
 	'title' => 'CÔNG TY CỔ PHẦN <br>ĐẦU TƯ VÀ XÂY LẮP 388',
-	'home_menu' => 'Trang Chủ',
-	'about_menu' => 'Giới Thiệu',
-	'news_menu' => 'Tin Tức',
-	'project_menu' => 'Dự Án',
-	'job_menu' => 'Tuyển Dụng',
-	'contact_menu' => 'Liên Hệ',
-	'typical_projects' => 'Dự Án Tiêu Biểu',
-	'cooperate_with' => 'Hợp Tác Cùng',
+	'home_menu' => 'TRANG CHỦ',
+	'about_menu' => 'GIỚI THIỆU',
+	'news_menu' => 'TIN TỨC',
+	'project_menu' => 'DỰ ÁN',
+	'job_menu' => 'TUYỂN DỤNG',
+	'contact_menu' => 'LIÊN HỆ',
+	'typical_projects' => 'DỰ ÁN TIÊU BIỂU',
+	'cooperate_with' => 'HỢP TÁC CÙNG',
 	'contact_link' => 'Nhấp chuột vào link liên kết để liên hệ với 388',
 	'representative_office' => 'Văn phòng đại diện',
 	'headquarters' => 'Trụ sở chính',
@@ -47,4 +47,5 @@ return[
 	'under_construction' => 'Đang thi công',
 	'similar_jobs' => 'Việc làm tương tự',
 	'company_overview' => 'Tổng quan công ty',
+	'company_profile' => 'Hồ sơ năng lực',
 ];

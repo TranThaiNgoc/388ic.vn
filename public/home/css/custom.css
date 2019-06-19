@@ -67,9 +67,20 @@ table tr td {
 .card-top img {
   height: 160px!important;
 }
+.title-album h2 {
+  font-size: 14pt;
+}
+.album-img {
+    height: 150px;
+    width: 100%;
+}
+
 @media screen and (max-width: 575px) {
   .card-top-direc img {
     height: auto;
+  }
+  .album-img {
+    height: auto!important;
   }
 }
 @media screen and (max-width: 991px) {
@@ -77,6 +88,6 @@ table tr td {
     height: 60px;
   }
   .logo-name {
-    font-size: 11pt;
+    font-size: 10pt;
   }
 }

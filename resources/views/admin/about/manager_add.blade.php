@@ -26,7 +26,7 @@
                 	@csrf
                     <div class="form-group">
                         <label>Tên thành viên</label>
-                        <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Nhập tên thể loại">
+                        <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Nhập tên thành viên">
                         <span class="text-danger">{{ $errors->first('name') }}</span>
                     </div>
                     <div class="form-group">
@@ -35,9 +35,14 @@
                     	<span class="text-danger">{{ $errors->first('image') }}</span>
                     </div>
                     <div class="form-group">
-                    	<label>Vị trí</label>
+                    	<label>Vị trí tiếng Việt</label>
                     	<input type="text" name="location" class="form-control" placeholder="Nhập vị trí thành viên">
                     	<span class="text-danger">{{ $errors->first('location') }}</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Vị trí tiếng Anh</label>
+                        <input type="text" name="location_en" class="form-control" placeholder="Nhập vị trí thành viên">
+                        <span class="text-danger">{{ $errors->first('location_en') }}</span>
                     </div>
                     <div class="form-group">
                     	<label>Thứ tự</label>
